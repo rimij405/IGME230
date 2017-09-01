@@ -1,4 +1,4 @@
-# HW1B
+# Homework 1B - .htaccess (Custom 404 Error and Authorization)
 
 ## Links:
 *These are links used to showcase the .htaccess files.*
@@ -10,7 +10,7 @@
 [people.rit.edu/iae2784/230/error/error.html](https://people.rit.edu/iae2784/230/error/error.html "Link to custom 404 error page for IGME 230 class.")
 
 #### Broken Link to Page that Does Not Exist:
-[people.rit.edu/iae2784/230/error/thispagedoesnotexist.html](https://people.rit.edu/iae2784/230/error/thispagedoesnotexist.html "Link to a page that doesn't exist.)
+[people.rit.edu/iae2784/230/error/thispagedoesnotexist.html](https://people.rit.edu/iae2784/230/error/thispagedoesnotexist.html "Link to a page that doesn't exist.")
 
 #### Link to the NotError.HTML Page:
 [people.rit.edu/iae2784/230/error/](https://people.rit.edu/iae2784/230/error/ "Link to NotError.HTML page for IGME 230 class.")
