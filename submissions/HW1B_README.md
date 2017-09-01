@@ -4,6 +4,7 @@
 *These are links used to showcase the .htaccess files.*
 
 - [people.rit.edu/iae2784/230](https://people.rit.edu/iae2784/230/ "Link to Homepage for IGME 230 class.")
+- [people.rit.edu/iae2784/230/error/error.html](https://people.rit.edu/iae2784/230/error/error.html "Link to custom 404 error page for IGME 230 class.")
 - [people.rit.edu/iae2784/230/error/](https://people.rit.edu/iae2784/230/error/ "Link to NotError.HTML page for IGME 230 class.")
 - [people.rit.edu/iae2784/230/auth/](https://people.rit.edu/iae2784/230/auth/myPage.html "Link to page requiring authorization on the website.") 
 
