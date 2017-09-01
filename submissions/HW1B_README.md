@@ -3,10 +3,11 @@
 ## Links:
 *These are links used to showcase the .htaccess files.*
 
-- [people.rit.edu/iae2784/230](https://people.rit.edu/iae2784/230/ "Link to Homepage for IGME 230 class.")
-- [people.rit.edu/iae2784/230/error/error.html](https://people.rit.edu/iae2784/230/error/error.html "Link to custom 404 error page for IGME 230 class.")
-- [people.rit.edu/iae2784/230/error/](https://people.rit.edu/iae2784/230/error/ "Link to NotError.HTML page for IGME 230 class.")
-- [people.rit.edu/iae2784/230/auth/myPage.html](https://people.rit.edu/iae2784/230/auth/myPage.html "Link to page requiring authorization on the website.") 
+- Home Page: [people.rit.edu/iae2784/230](https://people.rit.edu/iae2784/230/ "Link to Homepage for IGME 230 class.")
+- Error 404 Page: [people.rit.edu/iae2784/230/error/error.html](https://people.rit.edu/iae2784/230/error/error.html "Link to custom 404 error page for IGME 230 class.")
+- Broken Link to Page that Does Not Exist: [people.rit.edu/iae2784/230/error/thispagedoesnotexist.html](https://people.rit.edu/iae2784/230/error/thispagedoesnotexist.html "Link to a page that doesn't exist.)
+- Link to the NotError.HTML Page: [people.rit.edu/iae2784/230/error/](https://people.rit.edu/iae2784/230/error/ "Link to NotError.HTML page for IGME 230 class.")
+- Link to Authorization Page: [people.rit.edu/iae2784/230/auth/](https://people.rit.edu/iae2784/230/auth/myPage.html "Link to page requiring authorization on the website.") 
 
 ## ZIP file:
 The .zip file includes three folders: home, error, and auth.
