@@ -1,0 +1,52 @@
+html, body, p {
+    margin: 0px;
+    padding: 0px;
+}
+
+#bio, #links, #foot {
+    position: relative;
+    z-index: 1;
+}
+
+#bio {
+    color: white;
+    background-color: black;
+}
+
+#links {
+    color: white;
+    background-color: rgba(254, 0, 0, 1);
+}
+
+#foot {
+    color: black;
+    background-color: white;
+}
+
+.page {
+    display: block;
+    font-size: 1.5em;
+    font-family: Arial, Tahoma, sans-serif;
+    min-height: 90%;
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/*https://www.viget.com/articles/angled-edges-with-css-masks-and-transforms*/
+.page:after {
+    /* Adds a skewed block. */
+    background: inherit;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(-1.5deg);
+    transform-origin: 100%;
+    z-index: -1;
+    -webkit-backface-visibility: hidden; // for Chrome Windows
+}
