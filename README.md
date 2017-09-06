@@ -26,3 +26,6 @@ This course provides an introduction to web development tools and technologies, 
 
 *Please look at the [submissions/](https://github.com/rimij405/IGME230/tree/master/submissions) folder for homework submissions/zip files.*
 *The [230/](https://github.com/rimij405/IGME230/tree/master/230) folder contains the website files.*
+
+## Class List
+The class list is a page for section 3 of IGME-230. It can be found here: [https://people.rit.edu/~spbics/230-03.shtml](https://people.rit.edu/~spbics/230-03.shtml).
