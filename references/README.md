@@ -20,4 +20,4 @@
 
 
 ## Other Links
--> [Mozilla Web Technologies](https://developer.mozilla.org/en-US/docs/Web) - *Contains links to various topics regarding web technologies, including HTML, CSS, JavaScript, and HTTP.*
+- [Mozilla Web Technologies](https://developer.mozilla.org/en-US/docs/Web) - *Contains links to various topics regarding web technologies, including HTML, CSS, JavaScript, and HTTP.*
