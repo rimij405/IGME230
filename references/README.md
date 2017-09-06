@@ -1,6 +1,10 @@
 # References
 *This file contains a series of references to useful links that I wish to keep record of.*
 
+## Tools
+- [REDbot.org](https://redbot.org/) - *Online tool that allows you to observe the response headers of websites, as well as provides a quick link to the [W3 HTML validator](https://validator.w3.org/).*
+- [W3 HTML Validator](https://validator.w3.org/) - *Validates HTML content.*
+- [W3 CSS Validator](http://www.css-validator.org/) - *Validates CSS content.*
 
 ## Markdown Guides
 - [Markdown Guide <Ghost>](https://help.ghost.org/hc/en-us/articles/224410728-Markdown-Guide) - *Markdown guide for writing Markdown files ('.md') for Ghost.*
