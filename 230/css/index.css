@@ -12,6 +12,12 @@ html, body, p {
     color: white;
     background-color: black;
 }
+ 
+#bio img {
+    height: 250px;   
+    border: 4px solid #ddd;
+    border-radius: 45px;
+}
 
 #links {
     color: white;
@@ -45,7 +51,7 @@ html, body, p {
     left: 0;
     position: absolute;
     right: 0;
-    transform: skewY(-1.5deg);
+    transform: skewY(-0.97deg);
     transform-origin: 100%;
     z-index: -1;
     -webkit-backface-visibility: hidden; // for Chrome Windows
