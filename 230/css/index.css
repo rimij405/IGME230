@@ -19,7 +19,7 @@
 html {
     margin: 0px;
     padding: 0px;
-    font-size: 16px;
+    font-size: 16px; /* Sets rem globally. */
 }
 
 body, p, h1, h2, h3, h4, h5, h6, img {
@@ -28,23 +28,18 @@ body, p, h1, h2, h3, h4, h5, h6, img {
     line-height: 1.75rem;
 }
 
-.center {
-    text-align: center;    
-}
+/* TEXT ALIGNMENT */
+.right { text-align: right; }
+.center { text-align: center; }
+.justify { text-align: justify; }
+.left { text-align: left; }
 
-.light {
-    font-weight: 300;
-}
+/* FONT STYLE */
+.light { font-weight: 300; }
+strong { font-weight: 700; }
+em { font-weight: 400; }
 
-strong {
-    font-weight: 700;
-}
-
-em {
-    font-weight: 400;  
-    font-style: italic;  
-}
-
+/* HEADINGS */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem; /* 2.5 x root element base font-size. = 40px */
@@ -54,11 +49,13 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 0.5rem;
 }
 
+/* HEADING FONT SIZES */
 h2 { font-size: 2.3rem; }
 h3 { font-size: 2.0rem; }
 h4 { font-size: 1.7rem; }
 h6 { font-size: 1.5rem; }
 
+/* COPY FONT and SIZE */
 p, a {    
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1rem; /* 1 x root element base font-size. = 16px */
@@ -134,11 +131,6 @@ nav ul li a:hover {
     background-color: black;
 }
  
-img {
-    float: right;
-    height: 200px;
-}
-
 #links {
     color: white;
     background-color: rgba(254, 0, 0, 1);
@@ -166,6 +158,5 @@ ul li:hover {
     color: black;
     background-color: white;
 }
-
 
 /* https://www.viget.com/articles/angled-edges-with-css-masks-and-transforms */
