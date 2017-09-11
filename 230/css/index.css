@@ -1,11 +1,132 @@
-html, body, p {
+/* 
+    Index.css | 09.11.2017
+    Ian Effendi
+    IGME 230.03
+
+    Creation of a CSS file for the IGME 230 home page.
+*/
+
+/* CSS Fonts and imports. */
+
+/* Source Sans Pro | Regular, Light */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
+
+/* Playfair Display | Bold Italic */
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700i');
+
+/* NORMALIZE SPACING: */
+
+html {
     margin: 0px;
     padding: 0px;
+    font-size: 16px;
 }
 
-#bio, #links, #foot {
-    position: relative;
-    z-index: 1;
+body, p, h1, h2, h3, h4, h5, h6, img {
+    margin: 0px;
+    padding: 1.5rem 2.5rem;    
+    line-height: 1.75rem;
+}
+
+.center {
+    text-align: center;    
+}
+
+.light {
+    font-weight: 300;
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-weight: 400;  
+    font-style: italic;  
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; /* 2.5 x root element base font-size. = 40px */
+    line-height: 1;
+    
+    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+h2 { font-size: 2.3rem; }
+h3 { font-size: 2.0rem; }
+h4 { font-size: 1.7rem; }
+h6 { font-size: 1.5rem; }
+
+p, a {    
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem; /* 1 x root element base font-size. = 16px */
+    line-height: 1.3;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: overline;
+}
+
+a:visited {
+    text-decoration: line-through;
+}
+
+a:active {
+    color: #ddd;
+    text-decoration:line-through;
+}
+
+section {    
+    margin: 0rem 3rem 3rem 3rem;
+}
+
+/* NAVIGATION BAR */
+
+nav {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav ul {
+    display: block;
+    list-style-type: none;
+    list-style: none;
+    
+    background-color: red;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    display: inline-block;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.7rem;
+}
+
+nav ul li a:hover {
+    color: black;
+    background-color: #ddd;
+}
+
+.sr-only {
+    display: none;
 }
 
 #bio {
@@ -13,10 +134,9 @@ html, body, p {
     background-color: black;
 }
  
-#bio img {
-    height: 250px;   
-    border: 4px solid #ddd;
-    border-radius: 45px;
+img {
+    float: right;
+    height: 200px;
 }
 
 #links {
@@ -24,35 +144,28 @@ html, body, p {
     background-color: rgba(254, 0, 0, 1);
 }
 
+ul {
+    list-style: none;
+}
+
+ul li {
+    display: block;
+    padding: 0.5rem;
+}
+
+ul li:hover {
+    border: 1px solid black;
+}
+
+.comment {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
 #foot {
     color: black;
     background-color: white;
 }
 
-.page {
-    display: block;
-    font-size: 1.5em;
-    font-family: Arial, Tahoma, sans-serif;
-    min-height: 90%;
-    height: 100vh;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
 
-/*https://www.viget.com/articles/angled-edges-with-css-masks-and-transforms*/
-.page:after {
-    /* Adds a skewed block. */
-    background: inherit;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 50%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    transform: skewY(-0.97deg);
-    transform-origin: 100%;
-    z-index: -1;
-    -webkit-backface-visibility: hidden; // for Chrome Windows
-}
+/* https://www.viget.com/articles/angled-edges-with-css-masks-and-transforms */
