@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Tables - Ian Effendi</title>
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Muli:300" rel="stylesheet">
+        
+		<style>            
+            html {
+                font-family: 'Muli', sans-serif;
+                font-size: 15px;
+                line-height: 1.4;
+            }
+                        
+            h1, h2, h3, h4, h5, h6, th, .col-headers {
+                font-family: 'Merriweather', serif;
+            }
+            
+            h1 { font-size: 1.5em; }
+            h2 { font-size: 1.4em; }
+            th, .col-headers { font-size: 1.3em; }
+            p { font-size: 1em; }
+            
+            .hidden { display: none; }
+            
+            footer {
+                max-width: 720px;
+                margin: 0px auto;
+                padding: 5px 25px;
+                clear: both;
+            }
+
+            footer p {
+                text-align: center;
+            }
+
+            main {
+                max-width: 1140px;
+                margin: 0px auto;
+                padding: 5px 25px;
+            }
+
+            .center {
+                margin: 0 auto;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .col-1 h1 {
+                width: 100%;
+                border: 4px solid red;
+                background: #ddd;
+                font-weight: bold;
+                text-align: center;
+                padding: 5px;
+                font-size: 24px;
+            }
+
+            #left, #right {
+                width: 49%;
+                margin: 0;
+                display: block;	
+            }
+
+            #left { float: left; }	
+            #right { float: right; }
+            
+            #left:hover { outline: 1px dotted #ddd; }
+            #right:hover { outline: 1px dotted #ddd; }
+
+            #left .col-item, #right .col-item {
+                margin: 15px;
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+            
+            .col-img img {
+                width: 100%;
+                border: 3px solid red;
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }
+            
+            .col-img figcaption {                
+                /* text-decoration: overline; /* Covered by caption class now. */
+                font-style: italic;
+                font-size: 0.8em;
+                color: red;
+            }
+            
+            .caption {
+                padding-top: 2px;
+                border-top: 1px solid red;
+            }
+            
+            span.caption {                
+                padding-bottom: 35px;
+            }
+            
+            table, tr, td, th {
+                border: 2px solid #ddd;
+                padding: 4px;
+            }	
+            
+            table {
+                table-layout: fixed;
+                width: 100%;                
+            }
+            
+            th {
+                color: white;
+                background: black;
+                font-weight: bold;
+            }
+
+            tr.col-headers {
+                color: black;
+                background: #ddd;
+                font-weight: bold;
+            }	           
+             
+            tr {
+                font-size: 0.87em;                
+            }
+            
+            @media (max-width: 820px) {
+                #left, #right { 
+                    clear: both;
+                    width: auto;
+                    margin: 0 auto;
+                    padding: 15px;
+                    display: block;
+                }
+                
+                .hidden {
+                    display: none;
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                }
+                
+                body {
+                    margin: 0;
+                }
+                
+                main {
+                    margin: 0 auto;
+                }
+                
+                table {
+                    table-layout: auto;
+                }
+                
+                
+            }
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="col-1">
+				<h1>Ian Effendi's Interests</h1>
+			</div>
+
+			<section id="left">
+                
+                <h2 class="hidden">Left Column</h2>
+                                
+				<div class="col-item">
+					<table>
+						<tr>
+							<th colspan="3">My Interests</th>
+						</tr>
+						<tr class="col-headers">
+							<td>School</td>
+							<td>Hobbies</td>
+							<td>Other</td>
+						</tr>		
+						<tr>
+							<td>Graphic Design</td>
+							<td>Music Production</td>				
+							<td>Philanthropy</td>
+						</tr>		
+						<tr>
+							<td>Game Development</td>
+							<td>JRPGs</td>				
+							<td>Blogging</td>
+						</tr>		
+						<tr>
+							<td>Mobile Programming</td>
+							<td>Anime</td>				
+							<td>Netflix</td>
+						</tr>		
+						<tr>
+							<td>Creative Writing</td>
+							<td>Papercraft</td>				
+							<td>Natural History</td>
+						</tr>
+					</table>
+				</div>	
+
+				<div class="col-item center">
+					<p>IGME 230.03 is a class in which we learn how to create websites, mobile applications, and (most importantly) tables, using the HTML5 specification of Hyper-Text Markup Language.</p>
+				</div>
+				
+				<figure class="col-item col-img">
+					<img alt="Picture of Ian Effendi, creator of this page." src="../../media/profile.jpg" />
+                    <figcaption><span class="caption">A picture of Ian Effendi!</span></figcaption>
+				</figure>
+
+			</section>
+
+			<section id="right">
+                
+                <h2 class="hidden">Right Column</h2>
+                
+				<div class="col-item">
+                    <p>During Summer 2017, I interned at Sesame Workshop, in their Digital Production department. My time there has gave me the grounding I was in search of, worrying about my opportunities for the future.</p>
+				</div>
+				
+				<div class="col-item">
+					<p>With a large international presence, I can see my time there being fruitful, for both the people I'll work with, and for myself. I believe that I was very lucky to be provided with the opportunity to meet such wonderful people, and, I anticipate that a lot of hard work will be accomplished in my time there, should I return. I want to challenge myself and the idea of making video games that are both engaging and educational for children, pushes me to be the best I can be in full-stack web development technologies.</p>
+				</div>                
+                
+				<div class="col-item">
+					<p>Living in New York City, I also had the opportunity to visit famous museums for free, due to my status as a city resident. Pictured below is a photo I took at one of the exhibits; this one showcased ancient artifacts.</p>
+				</div>
+                
+				<figure class="col-item col-img">
+					<img alt="Museum of Natural History Exhibit on Ancient Artifacts." src="../../media/tables_image02.jpg" />
+                    <figcaption><span class="caption">Exhibit at the Museum of Natural History, in New York City.</span></figcaption>
+				</figure>
+			</section>
+		</main>
+
+		<footer>
+			<p>&copy; Copyright 2017 - Ian Effendi</p>
+			<p class="caption">Resize Me! Guaranteed mobile-first and responsive from 600px and beyond!</p>
+		</footer>
+	</body>
+</html>
