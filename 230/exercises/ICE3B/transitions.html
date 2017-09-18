@@ -3,22 +3,159 @@
     <head>
         <title>List #1 - ICE 3B2 - CSS Transitions</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="tabs.css" />
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Asap+Condensed|Slabo+27px');
+            
+            html, body {
+                position: relative;
+                font-size: 20px;
+                overflow: hidden;                
+                font-family: 'Asap Condensed', sans-serif;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Slabo 27px', serif;
+            }
+            
+            main {
+                position: relative;
+                margin: 0px auto;
+                margin-top: 50px;
+                margin-bottom: 150px;
+                padding: 50px;
+            }
+            
+            main p {
+                text-align: center;
+            }
+            
+            .menu h3 {
+                text-align: center;
+                margin: 0px;
+                font-size: 1em;
+            }
+            
+            .menu-wiggle {
+                border: 4px solid #ddd;
+                border-radius:  250px 750px 250px 750px /
+                                750px 250px 750px 250px;
+            }
+            
+            .menu-wiggle:hover {                
+                border: 2px solid red;
+                border-radius:  750px 250px 750px 250px /
+                                250px 750px 250px 750px;
+            }
+            
+            .menu-wiggle-reverse {                
+                border: 4px solid #ddd;
+                border-radius:  750px 250px 750px 250px /
+                                250px 750px 250px 750px;
+            }
+            
+            .menu-wiggle-reverse:hover {
+                border: 2px solid red;
+                border-radius:  250px 750px 250px 750px /
+                                750px 250px 750px 250px;
+            }
+                                                
+            .menu {
+                height: 1em;
+                background-color: #ddd;
+                width: 25%;
+                overflow: hidden;   
+                margin: 5px auto;
+                padding: 5px;
+                transition: height 1.05s ease, border 1.05s ease, border-radius 1.05s ease;
+            }
+            
+            .menu:hover {
+                height: 8.5em;
+                transition: height 1s ease, border 1s ease, border-radius 1s ease;
+            }
+            
+            ul {
+                list-style: none;
+                list-style-type: none;
+                margin: 0px;
+                padding: 0px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            ul li {
+                list-style-type: none;
+                margin: 0px;
+                padding: 0px;
+                padding-bottom: 2px;
+                width: 100%;
+            }
+            
+            ul li a {
+                color: red;
+                text-decoration: none;
+                border-bottom: 0px solid red;
+                transition: border 0.3s ease;
+            }
+            
+            ul li a:hover {
+                color: brown; 
+                border-bottom: 1px solid brown;                
+                transition: border 0.5s ease;
+            }
+            
+            ul li a:active {
+                color: white;
+                border-bottom: 1px solid white;
+                transition: border 0.3s ease;
+            }
+        
+            footer {
+                position: absolute;
+                bottom: 5%;
+                width: 100%;
+                border-top: 1px solid red;
+            }
+            
+            footer p {
+                text-align: center;
+            }
+            
+            
+        </style>
     </head>
     <body>
         <main>
-            <div>
+            <div class="menu menu-wiggle">
+                <h3>My ICEs</h3>
                 <ul>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
+                    <li><a href="../ICE1B/auth_start/myPage.html">ICE 1B - Authorization</a></li>
+                    <li><a href="../ICE2A/cremebrulee.html">ICE 2A - Creme Brulee</a></li>
+                    <li><a href="../ICE2B/kadayif.html">ICE 2B - Kadayif</a></li>
+                    <li><a href="../ICE3A/tables.html">ICE 3A - Tables</a></li>
+                    <li><a href="../ICE3B/page1.html">ICE 3B - Navigation Styling</a></li>
+                    <li><a href="../ICE3B/list1.html">ICE 3C - Tabs</a></li>
+                </ul>
+            </div>
+            
+            <div class="menu menu-wiggle-reverse">
+                <h3>My Projects</h3>
+                <ul>
+                    <li><a href="../ICE2A/cremebrulee.html">Wiki Project</a></li>
+                    <li><a href="#">CMS</a></li>
+                    <li><a href="#">Project 1</a></li>
+                    <li><a href="#">Project 2</a></li>
+                    <li><a href="#">Project 3</a></li>
                 </ul>
             </div>
             
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra ex ac sapien mollis, ac placerat tellus ultrices. Ut felis odio, imperdiet eget diam nec, ullamcorper posuere purus. Donec ornare nibh tortor. Cras pretium bibendum fermentum. Pellentesque id venenatis eros. Mauris rhoncus ut risus vel consectetur. Phasellus varius, dui eleifend tristique accumsan, purus enim ullamcorper ex, et sodales tortor nibh nec felis. Cras convallis tellus eget turpis vehicula, eget tincidunt risus rhoncus. Curabitur egestas erat augue, ut ultrices ligula venenatis a. Morbi fermentum a ligula eu facilisis. In pulvinar ultricies tellus, et feugiat libero accumsan eu. Quisque bibendum justo libero, ac consequat lorem tristique et. Integer a ex a enim auctor imperdiet eget ut nulla. Nullam malesuada turpis id ipsum laoreet, vel egestas sem pharetra. Ut sed mauris finibus odio auctor imperdiet vitae tristique nibh. Nullam sit amet hendrerit ligula.
+                Hover over the boxes above to see the contents.
             </p>
+            
+            <p>
+                This page was created to satisfy the requirements of exercise ICE3B - CSS transitions.
+            </p>            
         </main>
 		<footer>
 			<p>&copy; Copyright 2017 - Ian Effendi</p>
