@@ -9,6 +9,11 @@ ul#navlist {
     padding: 0;
     margin: 0;
     list-style-type: none;
+    
+    float: left;
+    width: 100%;
+    color: #fff;
+    background-color: #036;
 }
 
 ul#navlist li {
@@ -21,6 +26,13 @@ ul#navlist li a {
     color: #fff;
     background-color: #036;
     padding: 0.2em 1em;
+    text-decoration: none;
+    border-right: 1px solid #fff;
+}
+
+ul#navlist li a:hover {
+    color: #fff;
+    background-color: #369;    
 }
 
 /* Don't change the styles below (unless you really want to) */
