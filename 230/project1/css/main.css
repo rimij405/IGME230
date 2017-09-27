@@ -1,2 +1,80 @@
 /* Base stylesheet for Project 1 */
 /* Created by Ian Effendi */
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {    
+    margin: 5%;
+    padding: 5px;    
+    font-size: 18px;
+}
+
+div#website-wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+div.brand {
+    float: left;
+    display: inline-block;
+    height: 5em;
+    width: auto;
+    position: absolute;
+    top: -20px;
+    
+    border-radius: 50px 50px 50px 50px;
+}
+
+div.brand img {
+    height: 100%;
+    width: auto;
+}
+
+ul#navigation {
+    width: 90%;
+    position: relative;
+    top: -10px;
+    left: 50px;
+    list-style: none;
+    list-style-type: none;
+}
+
+ul#navigation li.navigation-link {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 1em 3em;
+}
+
+img.current-link-img {
+    height: 2em;
+    vertical-align: middle;
+}
+
+header {
+    display: block;
+    clear: both;    
+    position: relative;
+}
+
+main {
+    margin-top: 5%;
+}
+
+footer {
+    position: sticky;
+    left: 0px;
+    bottom: -500px;
+    
+    background: #ddd;
+    margin: 0px auto;
+    height: auto;
+    width: 100%;
+    
+    overflow-x: hidden;
+}
+
+#project {
+    width: 100%;
+}
