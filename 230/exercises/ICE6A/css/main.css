@@ -66,20 +66,229 @@ p, a {
 }
 
 a {
-    color: black;
     text-decoration: none;
+    color: #aa0000;    
+    transition: all 0.4s ease;
 }
 
 a:hover {
-    color: red;
-    text-decoration: underline;
+    color: #ff0000;
+    text-decoration: none;
+    transition: all 0.5s ease;
 }
 
 a:visited {
-    text-decoration: line-through;
+    font-style: italic;
 }
 
 a:active {
-    color: #ddd;
-    text-decoration: overline;
+    color: #ff3333;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    display: block;
+    margin: 0px auto;
+    padding: 5px 25px;
+    clear: both;
+
+    margin-top: 5%;
+    
+    border-top: 1px solid red;
+}
+
+footer p {
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+
+footer a:active {
+    text-decoration: underline;
+}
+
+/* Page Contents */
+#id_wrapper {
+    margin: 0px;
+    width: 80%;
+}
+
+#id_message, #id_tasks {
+    margin: 0px;
+    padding: 0px;
+
+    padding-top: 5%;
+
+    text-align: justify;
+}
+
+#id_message h1, #id_tasks h2, p, ol, ul {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#id_message h1, #id_tasks h2 {
+    padding-bottom: 10px;
+}
+
+#id_tasklist {
+    margin: 0px;
+    margin-top: 5px;
+    margin-left: 40px;
+    padding: 15px 35px;
+    padding-top: 15px;
+
+    font-family: 'Source Sans Pro', monospace;
+    font-size: 0.8em;
+
+    width: 70%;
+    background: #ddd;
+}
+
+.cl_listelement, .cl_sitemap_link {
+    list-style-type: lower-greek;
+
+    margin-top: 0px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    background: transparent;            
+    transition: all 0.4s ease;
+}
+
+.cl_listelement:hover, .cl_sitemap_link:hover {
+    margin-top: 5px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    background: #fff;
+
+    transition: all 0.4s ease;
+}  
+
+ol > .cl_sitemap_link:first-child,
+ul > .cl_sitemap_link:first-child, 
+ol > .cl_sitemap_link:last-child,
+ul > .cl_sitemap_link:last-child,
+ol > .cl_listelement:first-child,
+ul > .cl_listelement:first-child, 
+ol > .cl_listelement:last-child,
+ul > .cl_listelement:last-child {
+    margin-bottom: 0px;
+}
+
+ol > .cl_sitemap_link:first-child:hover,
+ul > .cl_sitemap_link:first-child:hover, 
+ol > .cl_sitemap_link:last-child:hover,
+ul > .cl_sitemap_link:last-child:hover,
+ol > .cl_listelement:first-child:hover,
+ul > .cl_listelement:first-child:hover, 
+ol > .cl_listelement:last-child:hover,
+ul > .cl_listelement:last-child:hover {
+    margin-bottom: 5px;
+}
+
+/* NAVIGATION */
+header {
+    margin-bottom: 5%;
+}
+
+.cl_mobile
+{ 
+    display: block;
+}
+
+.cl_desktop { 
+    display: none;
+}
+.cl_nav_list {
+    text-decoration: none;
+    list-style: none;
+    list-style-type: none;
+}
+
+@media(min-width: 780px) {
+    
+    /* NAVIGATION */
+    header {
+        margin: 0px;
+        padding: 0px;
+        
+        margin-bottom: 5%;
+        height: 100px;
+        border-bottom: 1px solid red;
+    }
+    
+    .cl_mobile
+    { 
+        display: none;
+    }
+
+    .cl_desktop { 
+        display: block;
+        position: absolute;
+                
+        top: 25px;
+        left: 0px;
+        width: 100%;
+        height: 100px;
+        
+    }    
+    
+    .cl_desktop_table {
+        display: table;
+        margin: 0px auto;
+        width: 100%;
+    }
+    
+    .cl_nav_list {
+        display: block;
+        
+        margin: 0px auto;
+        padding: 5px 0px;
+        max-width: 570px;
+        /* width: 70%; */
+        
+        vertical-align: middle;
+    }    
+    
+    .cl_nav_list .cl_nav_link {
+        display: inline;
+        float: left;
+                
+        text-align: center;          
+    }
+    
+    .cl_nav_list .cl_nav_link a {  
+        display: block;
+        margin: 5px;
+        padding: 15px 10px;
+                
+        line-height: 1;
+        font-size: 1.4em;
+        
+        color: #aa0000;
+        border: 2px solid transparent;
+        transition: all 0.4s ease;
+    }
+    
+    .cl_nav_list .cl_nav_link a.cl_current {
+        color: #ff0000;
+        border-top: 2px solid #aa0000;
+        border-bottom: 2px solid #aa0000;   
+        transition: all 0.4s ease;     
+    }
+    
+    .cl_nav_list .cl_nav_link a:hover {
+        color: #ff1111;
+        border-top: 2px solid red;
+        border-bottom: 2px solid red;
+        transition: all 0.7s ease;
+    }
+    
 }

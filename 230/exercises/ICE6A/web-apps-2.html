@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Application 2</title>
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <script>
+
+            // Common JS Objects
+            let colors = ["red","green","blue"]; // Array literal
+            let person = {name:"Fred",age:20};   // Object literal
+            let month = new Date().getMonth(); 
+            let age = Math.round(20.999);
+
+            // Treat "primitives" like objects
+            let sum = 99.980809809;             // Number
+            let name = "Fred";                  // String
+            let isLoggedIn = false;             // Boolean
+            let userName = undefined;
+            let data = null;
+
+            // #1: Append a color to colors array.
+            colors.push('purple');
+
+            // #2: Pop color off of the array.
+            console.log('#2: Last element: ' + colors.pop());        
+
+            // #3: Loop through the colors array using a for loop and print each value.
+            for(i = 0; i < colors.length; i++){
+                console.log("Colors: " + colors[i]);           
+            }       
+
+            // #4: Person's school. 
+            person.school = "RIT";       
+            console.log("Person's School: " + person.school);
+
+            // #5: Number of seconds that have passed since Jan 1970.
+            console.log("Date:" + (new Date()).getSeconds());
+
+            // #6: Print the PI value.
+            console.log("PI: " + Math.PI);
+
+            // #7: Get the absolute value of -999.
+            console.log("Absolute Value of -999: " + Math.abs(-999));
+
+            // #8: Turn hello uppercase.
+            let hello = "Hello";
+            console.log("Uppercase Hello: " + hello.toUpperCase());
+
+        </script>
+</head>
+<body>
+    
+    <div id="id_wrapper">
+        <div id="id_message">
+            <h1>Web Application Exercise 2</h1>
+            <p>Please take a look at the developer's console for this page.</p>
+        </div>
+        
+        <div id="id_tasks">
+            <h2>Tasks</h2>
+            <p><em>This page accomplishes the following:</em></p>
+            <ol id="id_tasklist">
+                <li class="cl_listelement">Use a method of the Array object to append another color to the end of the colors array.</li>
+                <li class="cl_listelement">Print out the last element in the colors array.</li>
+                <li class="cl_listelement">Loop through the colors array using a for loop and print out each value to the console.</li>
+                <li class="cl_listelement">Add a new property named school to the person object and give it a value of "RIT". Then print this value to the console.</li>
+                <li class="cl_listelement">Print out the number of seconds that have passed since 1970 - use the Date object.</li>
+                <li class="cl_listelement">Print out the value of pi - use the Math object.</li>
+                <li class="cl_listelement">Print out the absolute value of -999 - use the Math object.</li>
+                <li class="cl_listelement">Print out an "all caps" version of the string "Hello" - use a method of the String object.</li>
+            </ol>            
+        </div>
+        
+    </div>
+    
+
+    <footer>
+        <p>&copy; Copyright 2017 - Ian Effendi</p>
+        <p class="caption"><a href="index.html">Return to Exercises</a>.</p>
+    </footer>
+    
+</body>
+</html>
