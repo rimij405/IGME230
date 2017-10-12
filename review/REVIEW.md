@@ -498,7 +498,7 @@ Hotlinks:
 ***
 
 ## Intro to Web Applications ##
-*This topic deals with all types of web applications developed to run in a web browser, typically with the use of JavaScript.
+*This topic deals with all types of web applications developed to run in a web browser, typically with the use of JavaScript.*
 *Below are questions related to each section.*
 
 Review Questions:
