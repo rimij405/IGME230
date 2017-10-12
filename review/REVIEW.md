@@ -39,7 +39,7 @@ Hotlinks:
 *Summary of topic goes here*
 *Below are some review questions*
 
-#### Question 1 ###
+### Question 1 ###
 **Who (the client or the server) sends *request headers*?**
 
 *TBD - Answer under construction.*
@@ -480,20 +480,20 @@ Hotlinks:
 ### Phases of the Design Process  ###
 *The overall process for designing a website consists of the following phases:*
 
-- 1. Define the purpose.
-- 2. Consider the audience.
-- 3. Gather Ideas
-- 4. Organize the Ideas
-- 5. Write the Content
-- 6. Organize the Content
-- 7. Determine the Navigation
-- 8. Sketch the Pages
-- 9. Start up your computer!
-- 10. Build Pages
-- 11. Test
-- 12. Iterate
-- 13. Maintain
-- 14. Archive
+1. Define the purpose.
+2. Consider the audience.
+3. Gather Ideas
+4. Organize the Ideas
+5. Write the Content
+6. Organize the Content
+7. Determine the Navigation
+8. Sketch the Pages
+9. Start up your computer!
+10. Build Pages
+11. Test
+12. Iterate
+13. Maintain
+14. Archive
 
 ***
 
@@ -537,6 +537,8 @@ Review Questions:
 - *WHATWG's specs and standards.*
 - *W3C's W3Schools documentation site.*
 
+***
+
 ### Web Application 2 ###
 **Introduction to JavaScript**
 
@@ -563,6 +565,8 @@ Review Questions:
 #### Question 6 ####
 **What kinds of values can a `Number` type hold?**
 *All numbers are always 64-bit double precision floating point values.*
+
+***
 
 ### Web Application 3 ###
 **Introduction to Web Browser DOM**
@@ -612,6 +616,8 @@ Review Questions:
 **What does the `debugger;` statement do?**
 *The `dubuggger;` statement will stop code execution of the following line, and, if possible, call a debugging function. This only occurs when debugging is enabled.*
 
+***
+
 ### Web Application 4 ###
 **More Web Browswer DOM Methods**
 
@@ -646,6 +652,8 @@ Review Questions:
 #### Question 8 ####
 **What is the *parent* of the "Google" `<li>` tag in `more-dom-4.html`?**
 *Answer*
+
+***
 
 ### Web Application 5 ###
 **JavaScript Functions**
