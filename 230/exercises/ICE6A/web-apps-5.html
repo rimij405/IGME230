@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Web Application 4</title>
+        <title>Web Application 5</title>
         <link type="text/css" rel="stylesheet" href="css/main.css" />
         <style>
             body { 
@@ -44,67 +44,94 @@
 
                 transition: all 0.7s ease;
             }  
+
+            .cl_listelement a {
+                font-size: 1em;
+            }
         </style>
         <script>
             window.onload = function() {
                 // Be sure to use document.createElement() to create each element.
-                console.log("Be sure that your code uses document.createElement() to create each element.");
+                // console.log("Be sure that your code uses document.createElement() to create each element.");
                 
                 // Add you favorite colors and foods to the arrays. 
-                console.log("Add you favorite colors and foods to the arrays.");
+                // console.log("Add you favorite colors and foods to the arrays.");
                 let colors = ["red","green","blue","purple","pink"];
                 let foods = [];
 
-                // Optional (worth an extra 5 points) - can you figure out how to pull the key
-                // and value from the links object literal?
+                // The links object.
                 let links = {
                         "RIT": "http://www.rit.edu",
                         "RWAG" : "https://www.facebook.com/RWAGclub",
                         "New Media Club" : "http://newmediaclub.cias.rit.edu"
                     }
                                 
-                // Create the web-apps-4.html file
-                console.log("Create the web-apps-4.html file");
+                // Create the web-apps-5.html file
+                console.group("Create the web-apps-5.html file. (66)");
                 
                 // Add you favorite colors and foods to the arrays. 
-                console.log("Add you favorite colors and foods to the arrays.");
+                console.log("Add you favorite colors and foods to the arrays. (69)");
                 colors.push("orange","maroon","brown");
                 foods.push("RITz Cheese Crackers","Eggplant","Toast","Waffles","Strawberries","Cheesecake","Cheese");
                 
-                // Write code that loops through the colors array, generates list items, and appends them.
-                console.log("Write code that loops through the colors array, generates list items, and appends them to the appropriate list element.");
-                console.log("\tFor this array use a classic for loop.");
-                
-                let colorList = document.querySelector("#colorsList");
-                for(let i = 0; i < colors.length; i++){
-                    let el_item = document.createElement("li");
-                    let el_item_content = document.createTextNode(colors[i]);  
-                    el_item.style.color = colors[i];
-                    el_item.appendChild(el_item_content);                    
-                    colorList.appendChild(el_item);
-                    console.log("\t\tAdded item: [" + colors[i] + "]");
+                // console.log("\tFor this array use a classic for loop.");
+                                
+                // Write code that uses a function to handle the list creation.
+                console.log("createList() - The function that builds the lists. (76)");
+                function createList(listElement, array = ["puppydogs", "butterflies", "lollipops"]) {
+                    // array is set to [puppydogs, butterflies, lollipops] by default.
+                    
+                    // Creating a list for the specified element.
+                    console.group(listElement + " list.");
+                    console.log("\tcreateList(): Creating list for " + listElement + " element. (81)");
+
+                    // Query for the list element.
+                    let list = document.querySelector(listElement);
+
+                    // If it doesn't exist, create element.
+                    if(!list) {
+                        document.createElement("div").id = listElement;
+                        list = document.querySelector(listElement);
+                    }
+
+                    console.group("List element creation. (93)");
+                    for(let i = 0; i < array.length; i++){
+                        let el_item = document.createElement("li");
+                        let el_item_content = document.createTextNode(array[i]);  
+                        /* el_item.style.color = color[i]; */ // Can't do the coloring array with a function like this.
+                        el_item.appendChild(el_item_content);                    
+                        list.appendChild(el_item);
+                        console.log("\t\tAdded item: [" + array[i] + "]");
+                    }
+                    console.groupEnd();
+                    console.groupEnd();
                 }
-                
-                // Write code that loops through the food array, generates list items, and appends them to the appropriate list element.
-                console.log("Write code that loops through the food array, generates list items, and appends them to the appropriate list element.");
-                console.log("\tFor this array use an ES6 for...of loop.");
-                
-                let foodList = document.querySelector("#foodsList");
-                for(let food of foods){
-                    let el_item = document.createElement("li");
-                    let el_item_content = document.createTextNode(food);
-                    el_item.appendChild(el_item_content);
-                    foodList.appendChild(el_item);
-                    console.log("\t\tAdded item: [" + food + "]");
-                }                
-                
+
+                // Create the color and foods list.
+                console.log(": Call the createList() function for the colors list. (104)");
+                createList("#colorsList", colors);                
+                console.log(": Call the createList() function for the foods list. (106)");
+                createList("#foodsList", foods);
+
+                // RETROACTIVELY COLOR THE LINKS //
+
+                console.group("Retroactively color the list elements in the color list. (111)");
+                let colorsList = document.querySelector("#colorsList").querySelectorAll("li");
+                for(el_item of colorsList) {
+                    console.log("\tColoring element '" + el_item.innerHTML + "'");
+                    el_item.style.color = el_item.innerHTML;
+                }
+                console.groupEnd();
+
+                // FAVORITE LINKS //
+
                 // Optional: Add your favorite web sites to the links object literal.
-                console.log("Optional: Add your favorite web sites to the links object literal.");
+                // console.log("Optional: Add your favorite web sites to the links object literal.");
                 
                 // Create a method to chain addition of websites.
-                console.log("Declaration of push() method. Allows addition of key, value pair to a object literal collection.");
+                // console.log("Declaration of push() method. Allows addition of key, value pair to a object literal collection.");
                 function push(collection, key, value) {
-                    console.log("\tpush(): Adding key-value pair: " + "[" + key + ": " + value + "]");
+                    // console.log("\tpush(): Adding key-value pair: " + "[" + key + ": " + value + "]");
                     collection[key] = value;
                 }
                 
@@ -114,7 +141,7 @@
                 push(links, "YouTube", "https://www.youtube.com/");
                 
                 // Optional:  Loop through the object, pulling out both the key and the value, generate functioning links, and add them to the last <ol> on the page. This is worth an extra 5 points on the HW assignment. The JavaScript for...in loop will probably get the job done.      
-                console.log("Optional: Loop through object, pulling the key and values out, generate functioning links, and add them to the last list.")
+                // console.log("Optional: Loop through object, pulling the key and values out, generate functioning links, and add them to the last list.")
                 
                 let favoriteLinks = document.querySelector("#linksList");
                 for(let link in links){
@@ -124,9 +151,11 @@
                     el_link.href = links[link];
                     el_item.appendChild(el_link);   
                     favoriteLinks.appendChild(el_item);
-                    console.log("\t\tAdded item: [" + link + ": " + links[link] + "]");
+                    // console.log("\t\tAdded item: [" + link + ": " + links[link] + "]");
                 }
-            
+
+                
+                console.groupEnd(); // Create the web-apps-5.html file. (66)            
             }
         </script>
     </head>
@@ -134,7 +163,7 @@
         
         <div id="id_wrapper">
             <div id="id_message">
-                <h1>Web Application Exercise 4</h1>
+                <h1>Web Application Exercise 5</h1>
                 <p>Please take a look at the developer's console for this page.</p>
             </div>
 
@@ -142,12 +171,10 @@
                 <h2>Tasks</h2>
                 <p><em>This page accomplishes the following:</em></p>
                 <ol id="id_tasklist">
-                    <li class="cl_listelement">Add your favorite colors and foods to the arrays.</li>
-                    <li class="cl_listelement">Write code that loops through the colors array, generates list items, and appends them to the appropriate list element. For this array use a classic for loop.</li>
-                    <li class="cl_listelement">Write code that loops through the foods array, generates list items, and appends them to the appropriate list element. For this array use an ES6 for...of loop.</li>
-                    <li class="cl_listelement">Be sure that your code uses document.createElement() to create each element.</li>
-                    <li class="cl_listelement">Optional: add your favorite web sites to the links object literal, and then loop through the object, pulling out both the key and the value, generate functioning links, and add them to the last &lsaquo;ul&rsaquo; on the page. This is worth an extra 5 points on the HW assignment. The JavaScript for...in loop will probably get the job done.</li>
-                </ol>            
+                    <li class="cl_listelement">Starting from <a href="web-apps-4.html">Web Application 4</a>, create a createList() function.</li>
+                    <li class="cl_listelement">Give the list a default array with ["puppydogs", "butterflies", "lollipops"].</li>
+                    <li class="cl_listelement">Call the function createList() to make the same lists from <a href="web-apps-4.html">Web Application 4</a>.</li>
+                 </ol>            
             </div>
         </div>
         
