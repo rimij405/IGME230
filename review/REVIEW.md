@@ -3,8 +3,8 @@
 *This document contains review questions for the midterm and for the web application assignments.*
 
 Hotlinks:
-- [Midterm Review](#midterm-review-questions)
-- [Web Application Review](#web-application-review-questions)
+- [Midterm Review](#topics)
+- [Web Application Review](#intro-to-web-applications)
 
 *****
 
@@ -19,7 +19,7 @@ Hotlinks:
 
 *****
 
-# Topics Covered #
+# Topics #
 *A non-exhaustive list of topics covered as well as terms and questions associated with these topics.*
 
 - [HTTP Protocol](#http-protocol)
