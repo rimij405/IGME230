@@ -498,7 +498,7 @@ Hotlinks:
 ***
 
 ## Intro to Web Applications ##
-*Summary of topic goes here*
+*This topic deals with all types of web applications developed to run in a web browser, typically with the use of JavaScript.
 *Below are questions related to each section.*
 
 Review Questions:
@@ -513,22 +513,27 @@ Review Questions:
 
 #### Question 1 ####
 **What is a *Web App*?**
+
 *A computer program in which a client runs in a web browser.*
 
 #### Question 2 ####
 **What are the 3 major components of a web browser that can be scripted/controlled by a web developer?**
+
 *The web layout engine, JavaScript engine, and Web Browser API's.*
 
 #### Question 3 ####
 **What languages are commonly used to "program" the** Web Layout Engine**?**
+
 *HTML and CSS.*
 
 #### Question 4 ####
 **How are new web browser features proposed?**
+
 *The browser vendors each attempt to implement new and experimental features which would then get reviewed by the other vendors and standard bodies.*
 
 #### Question 5 ####
 **Who is in charge of web standards - the standards bodies or the browser vendors?**
+
 *Both - browser vendors implement new features and the standard bodies monitor usage before deciding on a standard to employ, based on the usage of features in the by the browser vendors.*
 
 #### Question 6 ####
@@ -544,26 +549,32 @@ Review Questions:
 
 #### Question 1 ####
 **Which versions of JavaScript will we be covering in this course?**
+
 *ES5 (ECMAScript 5) and ES6 (ECMAScript 6).*
 
 #### Question 2 ####
 **Which JavaScript keyword declares *variables*?**
+
 *`let`*
 
 #### Question 3 ####
 **Which JavaScript keyword declares *constants*?**
+
 *`const`*
 
 #### Question 4 ####
 **What happens when you try to change the value of a previously declared *constant value*?**
+
 *The program will throw a `TypeError` due to attempted assignment to a constant.*
 
 #### Question 5 ####
 **What are the 5 built-in JavaScript "primitive" data types?**
+
 *They are `undefined`, `null`, `boolean`, `string`, and `number`.*
 
 #### Question 6 ####
 **What kinds of values can a `Number` type hold?**
+
 *All numbers are always 64-bit double precision floating point values.*
 
 ***
@@ -573,26 +584,32 @@ Review Questions:
 
 #### Question 1 ####
 **What does "CRUD" stand for?**
+
 *Create, Retrieve, Update, and Delete.*
 
 #### Question 2 ####
 **What happens when we try to use JavaScript DOM methods to access the contents of a page before it has loaded?**
+
 *Elements, before the page loading, aren't initialized or even declared. JavaScript will not have references to these elements in this event.*
 
 #### Question 3 ####
 **What is the name of the DOM method that will return the first element that matches the given selector?**
+
 *`querySelector()`*
 
 #### Question 4 ####
 **What is the name of the DOM method that will return** all **elements that match the given selector?**
+
 *`querySelectorALL()`*
 
 #### Question 5 ####
 **Which property is used to get and set the text and HTML contents of an HTML element?**
+
 *`innerHTML`*
 
 #### Question 6 ####
 **Which property is used to get and set the CSS styles of an HTML element?**
+
 *`style`*
 
 #### Question 7 ####
@@ -606,14 +623,17 @@ Review Questions:
 
 #### Question 9 ####
 **Compare and contrast "View Source" versus the capabilities of the Web Inspector. Which method gives the developer a "live" view of the current HTML and CSS of a page?**
+
 *The Developer Console (Web Inspector) provides a 'live' view of the HTML and CSS on a page, including reflections of any edits made to the page.*
 
 #### Question 10 ####
 **How can we add breakpoints to our code in the debugger, and inspect the values of variables?**
+
 *Breakpoints can be added via the `debugger;` call, or, if you are using Chrome, through the Developer Console's UI options. The Dev. Console can also handle placing breakpoints on DOM elements, given a trigger for modification of the element itself.*
 
 #### Question 11 ####
 **What does the `debugger;` statement do?**
+
 *The `dubuggger;` statement will stop code execution of the following line, and, if possible, call a debugging function. This only occurs when debugging is enabled.*
 
 ***
@@ -623,34 +643,42 @@ Review Questions:
 
 #### Question 1 ####
 **Exactly how many *parent* elements can an element on a web page have?**
+
 *Answer*
 
 #### Question 2 ####
 **What are the *child* elements of the `<ul>` tag in `more-dom-4.html`?**
+
 *Answer*
 
 #### Question 3 ####
 **What is the *first-child* of the `<ul>` tag in `more-dom-4.html`?**
+
 *Answer*
 
 #### Question 4 ####
 **What is the *last-child* of the `<ul>` tag in `more-dom-4.html`?**
+
 *Answer*
 
 #### Question 5 ####
 **What is the *next-sibling* of the "Google" `<li>` tag in `more-dom-4.html`?**
+
 *Answer*
 
 #### Question 6 ####
 **What is the *previous-sibling* of the "Google" `<li>` tag in `more-dom-4.html`?**
+
 *Answer*
 
 #### Question 7 ####
 **What is the *first-child* of the "Google" `<li>` tag in `more-dom-4.html`?**
+
 *Answer*
 
 #### Question 8 ####
 **What is the *parent* of the "Google" `<li>` tag in `more-dom-4.html`?**
+
 *Answer*
 
 ***
@@ -660,26 +688,32 @@ Review Questions:
 
 #### Question 1 ####
 **What is a *block*?**
+
 *Answer*
 
 #### Question 2 ####
 **Define *scope*?**
+
 *Answer*
 
 #### Question 3 ####
 **Declaring a variable with `let` or `const` at the top level of the `<script>` tag (outside of any other blocks or functions) gives it what kind of *scope*?**
+
 *Answer*
 
 #### Question 4 ####
 **Declaring a variable with `let` or `const` inside of a `for` loop of a function gives it what kind of *scope*?**
+
 *Answer*
 
 #### Question 5 ####
 **What does the `debugger;` statement do?**
+
 *The `dubuggger;` statement will stop code execution of the following line, and, if possible, call a debugging function. This only occurs when debugging is enabled.*
 
 #### Question 6 ####
 **What does D.R.Y stand for and *mean*?**
+
 *Answer*
 
 *****
