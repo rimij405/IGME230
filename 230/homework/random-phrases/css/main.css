@@ -29,128 +29,205 @@
     green: #516C35
     gold: #BDA636
 */
-
+   
 /* CSS for Random Phrases */
 * {
     margin: 0px;
     padding: 0px;
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    
-    font-family: 'Ganon', monospace;
-    font-size: 16px;
-    
-    color: #BDA636;
-    overflow: hidden;
-}
-
-.wrapper {
-    position: absolute;
-    top: 0px;
-    
-    margin: 0px auto;
-    padding: 10px; 
-    width: 100%;
-}
-
-header {
-    display: block;
-    position: relative;
-    text-align: center;
-    top: 15px;
-}
-
-#title {      
-    margin: 0px auto;
-    width: 400px;
-    padding: 10px;
-    border: 5px solid #516C35;
-    background: #28381B;
-    color:#BDA636;   
-    
-    font-family: 'Triforce';
-    font-size: 3em;
-}
-
-main {
-    display: block;
-    margin: 0px auto;
-    width: 450px;
-    height: 450px;
-}
-
-main p {
-    position: relative;
-    text-align: center;
-    padding: 5px;
-    background: #28381B;
-    
-    top: 75%; 
-    left: 05;
-    
-    font-size: 2.3em;
-    border: 5px solid #516C35;
-}
-
-footer {
-    position: fixed;
-    background: #302006;
-    
-    font-size: 1.3em;
-    
-    margin: 0px auto;
-    padding: 10px 25px;
-    
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    
-    border-top: 5px solid #516C35;
     transition: all 1.3s ease;
 }
 
-footer #copyright {
-    float: left;
+html {
+    width: 100%;
+    height: 100%;
 }
 
-footer #image-rights {
-    float: right;
+body {
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    
+    top: 0px;
+    left: 0px;
+    
+    width: 100%;
+    /* min-height: 100vh;
+    max-height: 100%; */
+    
+    font-family: 'Ganon', monospace;
+    font-size: 16px;
+
+    color: #BDA636;
+    overflow: hidden;
 }
 
 #backgroundcolor {
     display: block;
     position: absolute;
+    margin: 0px auto;
+    
+    top: 0px;
+    left: 0px;
+    
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    
     background: #28381B;
     z-index: -1;
 }
 
 #background {
-    position: relative;    
+    display: block;
+    position: absolute;
     margin: 0px auto;
-    padding: 0px; 
     
-    top: 10%;    
+    top: 0px;
+    left: 0px;    
+    
     width: 100%;
-    overflow: hidden;   
-    transition: all 1.3s ease; 
+    min-height: 100vh;
+    max-height: 100%;
+    
+    z-index: -1;
 }
 
 #background img {
-    position: relative;
     display: block;
+    position: relative;
+    margin: 0px;
     
-    top: 0%;
-    left: -45%;
-    height: 800px;
+    top: 0px;
+        
+    width: 100%;
     
-    /* width: 100%; */
     z-index: -1;
-    transition: all 1.3s ease;
+}
+
+.wrapper {
+    display: block;
+    position: absolute;
+    
+    top: 0px;
+    left: 0px;
+
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+}
+
+header {
+    display: block;
+    position: static;
+    margin: 5%;
+        
+    font-family: 'Triforce', serif;
+    font-size: 1.3em;
+    
+    text-align: center;    
+    
+    border: 5px solid #516C35;
+    background: #28381B;
+    color:#BDA636;
+}
+
+#title {
+    padding: 10px;
+}
+
+@media(min-width: 480px) {
+    header {
+        display: block;
+        position: relative;
+        text-align: center;
+        top: 15px;
+    }
+
+    #title {      
+        margin: 0px auto;
+        width: 400px;
+        padding: 10px;
+        font-family: 'Triforce';
+        font-size: 3em;
+    }
+
+    main {
+        display: block;
+        margin: 0px auto;
+        width: 450px;
+        height: 450px;
+    }
+
+    main p {
+        position: relative;
+        text-align: center;
+        padding: 5px;
+        background: #28381B;
+
+        top: 75%; 
+        left: 05;
+
+        font-size: 2.3em;
+        border: 5px solid #516C35;
+    }
+
+    footer {
+        position: fixed;
+        background: #302006;
+
+        font-size: 1.3em;
+
+        margin: 0px auto;
+        padding: 10px 25px;
+
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+
+        border-top: 5px solid #516C35;
+        transition: all 1.3s ease;
+    }
+
+    footer #copyright {
+        float: left;
+    }
+
+    footer #image-rights {
+        float: right;
+    }
+
+    #backgroundcolor {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #28381B;
+        z-index: -1;
+    }
+
+    #background {
+        position: relative;    
+        margin: 0px auto;
+        padding: 0px; 
+
+        top: 10%;    
+        width: 100%;
+        overflow: hidden;   
+        transition: all 1.3s ease; 
+    }
+
+    #background img {
+        position: relative;
+        display: block;
+
+        top: 0%;
+        left: -45%;
+        height: 800px;
+
+        /* width: 100%; */
+        z-index: -1;
+        transition: all 1.3s ease;
+    }
 }
 
 @media(min-width: 720px){
