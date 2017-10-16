@@ -639,7 +639,7 @@ Review Questions:
 ***
 
 ### Web Application 4 ###
-**More Web Browswer DOM Methods**
+**More Web Browser DOM Methods**
 
 #### Question 1 ####
 **Exactly how many *parent* elements can an element on a web page have?**
