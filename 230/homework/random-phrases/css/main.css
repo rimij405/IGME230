@@ -29,204 +29,596 @@
     green: #516C35
     gold: #BDA636
 */
-
+   
 /* CSS for Random Phrases */
+
+/* When width is less than 320px. */
+/* When height is less than 480px. */
+
 * {
     margin: 0px;
     padding: 0px;
 }
 
-html, body {
+html {
+    position: fixed;
+    overflow: hidden;
+    vertical-align: bottom;
+    
     width: 100%;
     height: 100%;
+}
+
+body {
+    display: block;
+    position: absolute;
+    margin: 0px auto;
+    
+    top: 0px;
+    left: 0px;
+    
+    width: 100%;
+    height: 100%;
+    /* min-height: 100vh;
+    max-height: 100%; */
     
     font-family: 'Ganon', monospace;
     font-size: 16px;
-    
+
     color: #BDA636;
     overflow: hidden;
-}
-
-.wrapper {
-    position: absolute;
-    top: 0px;
-    
-    margin: 0px auto;
-    padding: 10px; 
-    width: 100%;
-}
-
-header {
-    display: block;
-    position: relative;
-    text-align: center;
-    top: 15px;
-}
-
-#title {      
-    margin: 0px auto;
-    width: 400px;
-    padding: 10px;
-    border: 5px solid #516C35;
-    background: #28381B;
-    color:#BDA636;   
-    
-    font-family: 'Triforce';
-    font-size: 3em;
-}
-
-main {
-    display: block;
-    margin: 0px auto;
-    width: 450px;
-    height: 450px;
-}
-
-main p {
-    position: relative;
-    text-align: center;
-    padding: 5px;
-    background: #28381B;
-    
-    top: 75%; 
-    left: 05;
-    
-    font-size: 2.3em;
-    border: 5px solid #516C35;
-}
-
-footer {
-    position: fixed;
-    background: #302006;
-    
-    font-size: 1.3em;
-    
-    margin: 0px auto;
-    padding: 10px 25px;
-    
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    
-    border-top: 5px solid #516C35;
-    transition: all 1.3s ease;
-}
-
-footer #copyright {
-    float: left;
-}
-
-footer #image-rights {
-    float: right;
 }
 
 #backgroundcolor {
     display: block;
     position: absolute;
+    margin: 0px auto;
+    
+    top: 0px;
+    left: 0px;
+    
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    
     background: #28381B;
     z-index: -1;
 }
 
+#background,
+#background img,
+main,
+header, 
+footer, 
+footer div {
+    transition: top .5s, left .5s, bottom .5s, height .7s, width .7s, margin 1.5s, padding 1.5s, font-size 1.5s, border 1.5s;
+}
+
 #background {
-    position: relative;    
+    display: block;
+    position: absolute;
     margin: 0px auto;
-    padding: 0px; 
-    
-    top: 10%;    
+
+    top: 0px;
+    left: 0px;    
+
     width: 100%;
-    overflow: hidden;   
-    transition: all 1.3s ease; 
+    min-height: 100vh;
+    max-height: 100%;
+
+    z-index: -1;
 }
 
 #background img {
-    position: relative;
     display: block;
+    position: relative;
+    margin: 0px;
+
+    top: -10px;
+    left: -75%;
     
-    top: 0%;
-    left: -45%;
-    height: 800px;
-    
-    /* width: 100%; */
+    height: 150vh;
+    min-height: 480px;
+    min-width: 320px;
+     
     z-index: -1;
-    transition: all 1.3s ease;
 }
 
-@media(min-width: 720px){
-    .wrapper {
-        margin: 0px auto;
-        padding: 5%; 
-        width: 100%;
-        transition: all 1.3s ease;
-    }   
+.wrapper {
+    display: block;
+    position: absolute;
+
+    top: 0px;
+    left: 0px;
+
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+}
+
+header {
+    display: block;
+    position: static;
+    margin: 0px auto;
+    margin-top: 5%;
+
+    width: 90%;
+    font-family: 'Triforce', serif;
+    font-size: 1.3em;
+
+    vertical-align: middle;
+    text-align: center;    
+
+    border: 5px solid #516C35;
+    background: #28381B;
+    color:#BDA636;
+}
+
+#title {
+    padding: 10px;
+}
+
+main {
+    display: block;
+    position: relative;
+    margin: 0px auto;
+
+    top: 15px;
     
-    header {
+    width: 75%;
+
+    text-align: center;
+
+    border: 5px solid #516C35;
+    background: #28381B;
+    color:#BDA636;
+}
+
+main p {
+    padding: 10px;
+
+    font-family: 'Ganon', monospace;
+    font-size: 1em;
+    line-height: 1.15;
+}
+
+main strong,
+main em {
+    font-size: 1.1em;
+}
+
+footer {
+    display: block;
+    position: absolute;
+    padding: 5px 0px;
+
+    bottom: 1vh;
+    left: 5px;
+    right: 5px;
+
+    border-top: 5px solid #516C35;
+    background: #302006;
+}
+
+footer div {
+    margin: 0px 5px;
+    padding: 0px 5px;
+
+    font-size: 1.2em;
+}
+
+#copyright {
+    float: left;    
+}
+
+#image-rights {
+    float: right;
+}        
+
+/* When width is less than 320px. */
+/* When height is at least 480px. */
+@media (min-height: 480px) {
+    
+    #background img {
         top: 0px;
-        transition: all 1.3s ease;
+        left: -55%;
+        height: 100vh;
+        min-height: 480px;
     }
-    
-    #title {
-        padding: 15px;
-        margin: 0px auto;
-        width: 400px;
-        transition: all 1.3s ease;
+            
+    main {
+        top: 50px;    
     }
     
     main p {
-        left: -25%;
-        top: 45%;
-        width: 100%;
+        font-size: 2em;
+    }
+    
+}
+
+/* When width is less than 320px. */
+/* When height is at least 768px. */
+@media (min-height: 768px) {
         
+    #background img {
+        left: -35%;
+        height: 100vh;
+        min-height: 768px;
+    }
+            
+    main {
+        top: 100px;    
+    }
+    
+}
+
+/* When width is at least 320px. */
+/* When height is less than 480px. */
+@media (min-width: 320px) {
+    
+    #background img {
+        left: -15%;
+        
+        height: 200vh;
+        min-width: 768px;
+    }    
+    
+    header {
+        width: 55%;
+    }
+    
+    main {
+        width: 80%;
+    }
+    
+    main p {
+        font-size: 1.2em;
+    }
+    
+}
+
+/* When width is at least 320px. */
+/* When height is at least 480px. */
+@media (min-width: 320px) and (min-height: 480px) {    
+    
+    #background img { 
+        left: -50%;
+        height: 150vh;
+    }    
+    
+    main {        
+        top: 150px;
+        top: 25vh;        
+    }
+    
+    main p {
+        font-size: 2em;
+    }
+}
+
+/* When width is at least 320px. */
+/* When height is at least 768px. */
+@media (min-width: 320px) and (min-height: 768px) {    
+    
+    #background img { 
+        height: 100vh;
+    }    
+    
+}
+
+/* When width is at least 768px. */
+/* When height is less than 480px. */
+@media (min-width: 768px) {
+    
+    #background img {
+        left: -50%;
+        
+        height: 300vh;
+        min-width: 1024px;
+    }    
+        
+    header {
+        margin-top: 5%;
+        width: 45%;       
+    }
+    
+    main {
+        top: 5vh;
+        width: 65%;       
+    }
+    
+}
+
+/* When width is at least 768px. */
+/* When height is at least 480px. */
+@media (min-width: 768px) and (min-height: 480px) {
+    
+    #background img {
+        left: -60%;
+        
+        height: 200vh;
+        min-height: 480px;
+    }    
+    
+    main {
+        top: 20vh;
+        width: 65%;       
+    }
+    
+}
+
+/* When width is at least 768px. */
+/* When height is at least 768px. */
+@media (min-width: 768px) and (min-height: 768px) {
+    
+    #background img {
+        left: -70%;
+        
+        height: 200vh;
+        min-height: 768px;
+    }
+    
+}
+
+/* When width is at least 1024px. */
+/* When height is less than 480px. */
+@media (min-width: 1024px) {
+    
+    #background img {
+        left: -25%;
+        
+        height: 350vh;
+        min-width: 1440px;
+    }    
+    
+    header {
+        width: 35%;       
+    }
+    
+    main {
+        width: 45%;       
+    }
+    
+    footer {
+        font-size: 1.5em;
+    }
+    
+}
+
+/* When width is at least 1024px. */
+/* When height is at least 480px. */
+@media (min-width: 1024px) and (min-height: 480px){
+    
+    #background img {
+        left: -65%;
+        
+        height: 300vh;
+        min-height: 480px;
+    }    
+    
+    header {
+        margin: 0;
+        margin-top: 5%;
+        margin-left: 60%;
+    }
+    
+    main {
+        margin-right: 5%;
+    }
+    
+    main p {
+        font-size: 2em;
+    }   
+    
+}
+
+/* When width is at least 1024px. */
+/* When height is at least 768px. */
+@media (min-width: 1024px) and (min-height: 768px){
+    
+    #background img {
+        left: -45%;
+        
+        height: 250vh;
+        min-height: 768px;
+    }    
+    
+    header {
+        margin: 0px;
+        margin-top: 50px;
+        margin-left: 50px;
+        
+        width: 35%;
+    }
+    
+    main {
+        margin: 0px;
+        margin-left: 5%;
+        
+        width: 45%;
+    }
+    
+    main p {
+        font-size: 2em;
+    }   
+    
+}
+
+/* When width is at least 1440px. */
+/* When height is less than 480px. */
+@media (min-width: 1440px) {
+    
+    #background img {
+        top: -220px;
+        left: -35%;
+        
+        height: 675vh;
+        min-width: 2560px;
+    }    
+    
+    header {
+        margin-top: 3%;
+        width: 35%;
+    }
+    
+    main {
+        top: 5vh;
+        width: 45%;
+    }
+    
+    main p {
+        font-size: 1.5em;
+    }
+    
+    footer {
+        font-size: 1.7em;
+        left: 25%;
+        right: 25%;
+    }
+    
+}
+
+/* When width is at least 1440px. */
+/* When height is at least 480px. */
+@media (min-width: 1440px) and (min-height: 480px){
+    
+    #background img {
+        left: -5%;
+        
+        height: 350vh;
+        min-height: 768px;
+    }    
+    
+    header {
+        margin: 0px auto;
+        margin-top: 150px;
+    }
+    
+    main {
+        margin: 0px auto;
+    }
+}
+
+/* When width is at least 1440px. */
+/* When height is at least 768px. */
+@media (min-width: 1440px) and (min-height: 768px){
+    
+    #background img {
+        top: 0px;
+        left: -25%;
+        
+        height: 225vh;
+        min-height: 768px;
+    }    
+    
+    header {
+        margin: 0px;
+        margin-top: 50px;
+        margin-left: 50px;
+        
+        width: 35%;
+    }
+    
+    main {
+        margin: 0px;
+        margin-left: 5%;
+        
+        width: 45%;
+    }
+    
+    main p {
         font-size: 3em;
-        transition: all 1.3s ease;
+    }
+        
+}
+
+/* When width is at least 2560px. */
+/* When height is less than 480px. */
+@media (min-width: 2560px) {
+    
+    #background img {
+        top: -250px;
+        left: -5%;
+        
+        height: 675vh;
+        min-width: 2560px;
+    }    
+    
+    header {
+        margin-top: 3%;
+        width: 15%;
+    }
+    
+    #title {
+        font-size: 2.5em;
+    }
+    
+    main {
+        top: 5vh;
+        width: 30%;
+    }
+    
+    main p {
+        font-size: 2.5em;
     }
     
     footer {
         font-size: 2em;
-        padding: 15px 25px;
-        bottom: 25px;
-        transition: all 1.3s ease;
-    }
-    
-    #background {
-        top: 10%;
-        width: 100%;
-        overflow: hidden;
-    }
-    
-    #background img {
-        width: 150%;
-        height: auto;
-        top: 0%;
-        left: 0px;
+        left: 25%;
+        right: 25%;
     }
     
 }
 
-@media(min-width: 1080px) {   
+/* When width is at least 2560px. */
+/* When height is at least 480px. */
+@media (min-width: 2560px) and (min-height: 480px){
+    
+    #background img {
+        top: -550px;
+        left: -45%;
+        
+        min-height: 480px;
+    }    
+    
     #title {
-        position: relative;
-        left: -50px;
-        width: 500px;
+        font-size: 4em;
     }
     
     main p {
-        top: 35%;
-        left: -85%;
-        width: 700px;
+        font-size: 3em;
     }
     
-    #background {
-        top: 0%;
-        width: 100%;
-        overflow: hidden;
+}
+
+/* When width is at least 2560px. */
+/* When height is at least 768px. */
+@media (min-width: 2560px) and (min-height: 768px){
+    
+   #background img {
+        top: -10px;
+        left: -65%;
+       
+        height: 275vh;
+        min-height: 768px;
+    }    
+    
+    header {
+        width: 20%;
     }
     
-    #background img {
-        width: 175%;
-        height: auto;
-        top: 0%;
-        left: 0%;
+    #title {
+        padding: 5%;
+        font-size: 5em;
     }
+    
+    main {
+        width: 40%;
+    }
+    
+    main p {
+        font-size: 4em;
+    }
+    
+    
 }
