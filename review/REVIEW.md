@@ -644,42 +644,42 @@ Review Questions:
 #### Question 1 ####
 **Exactly how many *parent* elements can an element on a web page have?**
 
-*Answer*
+*Every element can have exactly one parent.*
 
 #### Question 2 ####
 **What are the *child* elements of the `<ul>` tag in `more-dom-4.html`?**
 
-*Answer*
+*The `<li>` elements containing anchors (`<a>` elements).*
 
 #### Question 3 ####
 **What is the *first-child* of the `<ul>` tag in `more-dom-4.html`?**
 
-*Answer*
+*The Apple `<li>` element.*
 
 #### Question 4 ####
 **What is the *last-child* of the `<ul>` tag in `more-dom-4.html`?**
 
-*Answer*
+*The Google `<li>` element.*
 
 #### Question 5 ####
 **What is the *next-sibling* of the "Google" `<li>` tag in `more-dom-4.html`?**
 
-*Answer*
+*Nothing, there is no sibling after this element.*
 
 #### Question 6 ####
 **What is the *previous-sibling* of the "Google" `<li>` tag in `more-dom-4.html`?**
 
-*Answer*
+*It would technically be Apple, but, there is no previous-sibling preprocessor command in CSS.*
 
 #### Question 7 ####
 **What is the *first-child* of the "Google" `<li>` tag in `more-dom-4.html`?**
 
-*Answer*
+*The `<a>` element containing, "Google," display text.*
 
 #### Question 8 ####
 **What is the *parent* of the "Google" `<li>` tag in `more-dom-4.html`?**
 
-*Answer*
+*The `<ul>` element.*
 
 ***
 
@@ -689,22 +689,26 @@ Review Questions:
 #### Question 1 ####
 **What is a *block*?**
 
-*Answer*
+*A block is an area of code contained within a set of curly braces.*
+```
+{ // This is a block. By themselves, they don't introduce a scope. }
+```
+*It is used to group code statements together.*
 
 #### Question 2 ####
 **Define *scope*?**
 
-*Answer*
+*Scope is the accessibility and visibility of the variables inside of it. Of note, there are two important scopes: local and global scope. A scope is usually introduced with a named scope - functions.*
 
 #### Question 3 ####
 **Declaring a variable with `let` or `const` at the top level of the `<script>` tag (outside of any other blocks or functions) gives it what kind of *scope*?**
 
-*Answer*
+*Global scope.*
 
 #### Question 4 ####
 **Declaring a variable with `let` or `const` inside of a `for` loop of a function gives it what kind of *scope*?**
 
-*Answer*
+*Block scope, scoped to the block the for loop is created with.*
 
 #### Question 5 ####
 **What does the `debugger;` statement do?**
@@ -714,7 +718,7 @@ Review Questions:
 #### Question 6 ####
 **What does D.R.Y stand for and *mean*?**
 
-*Answer*
+*Don't Repeat Yourself: algorithms and functionality should be defined only once in a code. (You can implement/use a function as many times as you wish, but, you shouldn't have multiple versions of the same algorithm). We do this because we don't want to have to update each instance of the algorithm whenever we make some kind of changes; having it in one place simplifies our jobs.*
 
 *****
 *[Back to Top](#review-questions)*
