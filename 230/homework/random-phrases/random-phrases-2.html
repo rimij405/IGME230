@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Random Phrases 2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <script type="text/javascript">   
+           
+            function getRandomIndex(length) {
+                if(length > -1) {
+                    let max = Math.floor(length);
+                    
+                    if(max == 0) {
+                        return max;
+                    }
+                    else {
+                        return Math.floor(Math.random() * max);
+                    }                    
+                }                
+            }
+            
+            function init(title, source, citation) {
+                
+                // Set the title.
+                let el_title = document.querySelector("#title");
+                el_title.innerHTML = title;
+                
+                // Set the image source.
+                let el_background = document.querySelector("#background img");
+                el_background.src = source;
+                
+                // Set the image rights.
+                let el_imagerights = document.querySelector("#image-rights");
+                el_imagerights.innerHTML = citation;
+                
+            }
+            
+        
+            
+            function main() {
+                
+                let array_phrases = [];
+                array_phrases.push("HYAT! HYA-HYAAAAAAT!");
+                array_phrases.push("It's dangerous to go alone! Take this.");
+                array_phrases.push("Hey! Listen!");
+                array_phrases.push("Did you forget how to z-target again?");
+                array_phrases.push("I am Error.");
+                array_phrases.push("It's a secret to everyone.");
+                array_phrases.push("Whenever there is a meeting, a parting is sure to follow.");
+                array_phrases.push("It is something that grows over time...a true friendship.");
+                array_phrases.push("Time passes, people move...Like a river's flow, it never ends.");
+                array_phrases.push("Heh...heh...The wind...It is blowing.");
+                array_phrases.push("You've met with a terrible fate, haven't you?");
+                array_phrases.push("I follow the strongest side! That's all I've ever known.");
+                array_phrases.push("If all else fails, use fire.");
+                array_phrases.push("Don't you see? All of you...Your gods destroyed you!");
+                array_phrases.push("Gee, it sure is <strong>BORING</strong> around here...");
+                array_phrases.push("Well <strong><em>excuuuuuuse</em></strong> me princess.");
+                array_phrases.push("The Wind Fish in name only, for it is neither");
+                                
+                document.querySelector("#phrase").innerHTML = '"' + array_phrases[getRandomIndex(array_phrases.length)] + '"';
+             
+                document.querySelector("#button").onclick = function(e) {
+                    document.querySelector("#phrase").innerHTML = '"' + array_phrases[getRandomIndex(array_phrases.length)] + '"';                    
+                }
+            }
+            
+            window.onload = function(){
+                
+                // Set the page up.
+                let title = "Link Said What?";
+                let source = "media/background.jpg"; // Source of the image file.
+                let citation = "Concept art from Nintendo"; // Owner of the image.
+                
+                init(title, source, citation); 
+                main();
+                
+            }            
+        </script>
+    </head>
+    <body>       
+        
+        <!-- Background image --> 
+        <div id="backgroundcolor"></div>          
+        <div id="background">
+            <img src="#" alt="Background image." title="Background image title." />    
+        </div>    
+
+        <div class="wrapper">
+            <!-- Header that serves as the title of the page. -->
+            <header>
+                <h1 id="title"></h1>
+            </header>
+            
+            <!-- Area with dynamically created content -->
+            <main>
+                <p id="phrase"></p>
+            </main>
+
+            <!-- Button -->
+            <div id="button">
+                <p id="button-text">Link Says...</p>
+            </div>
+            
+            <!-- Footer with name and copyright. -->
+            <footer>
+                <div id="copyright">&copy; Copyright 2017 - Ian Effendi</div>
+                <div id="image-rights"></div>
+            </footer>
+        </div>
+    </body>
+</html>
