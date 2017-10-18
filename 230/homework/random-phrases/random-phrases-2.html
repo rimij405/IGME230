@@ -35,9 +35,11 @@
                 
             }
             
-        
-            
             function main() {
+                
+                function displayQuote() {                       
+                    document.querySelector("#phrase").innerHTML = '"' + array_phrases[getRandomIndex(array_phrases.length)] + '"';
+                }
                 
                 let array_phrases = [];
                 array_phrases.push("HYAT! HYA-HYAAAAAAT!");
@@ -58,11 +60,10 @@
                 array_phrases.push("Well <strong><em>excuuuuuuse</em></strong> me princess.");
                 array_phrases.push("The Wind Fish in name only, for it is neither");
                                 
-                document.querySelector("#phrase").innerHTML = '"' + array_phrases[getRandomIndex(array_phrases.length)] + '"';
-             
-                document.querySelector("#button").onclick = function(e) {
-                    document.querySelector("#phrase").innerHTML = '"' + array_phrases[getRandomIndex(array_phrases.length)] + '"';                    
-                }
+                displayQuote();                
+
+                document.querySelector("#button").onclick = displayQuote;
+
             }
             
             window.onload = function(){
@@ -98,9 +99,9 @@
             </main>
 
             <!-- Button -->
-            <div id="button">
+            <button id="button">
                 <p id="button-text">Link Says...</p>
-            </div>
+            </button>
             
             <!-- Footer with name and copyright. -->
             <footer>
