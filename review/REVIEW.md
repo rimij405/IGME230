@@ -777,23 +777,23 @@ Review Questions:
 #### Question 1 ####
 **Give 2 advantages to using *event listeners* instead of *event handlers***.
 
-*ANSWER HERE*
+1. *Event listeners can easily be removed making event handling modular.*
+2. *Event listeners allow elements to keep track of multiple events and call multiple functions for one event, instead of just one."
 
 #### Question 2 ####
 **Give a situation where you might use an *event handler* anyway.**
 
-*ANSWER HERE*
+*You want to ensure elements only have one event and just that one event to be handled.*
 
 #### Question 3 ####
 **What does an event handler (or event listener) "point" at?**
 
-*ANSWER HERE*
+*Points to function references that can be called back at a later point in time.*
 
 #### Question 4 ####
 **What are the two advantages of using arrow functions?**
 
-*ANSWER HERE*
-
+*Shorter syntax and ability to call top-level functions since it doesn't bind this to the element, and, this is bound to the execution element (in some cases, window).*
 
 *****
 *[Back to Top](#review-questions)*
