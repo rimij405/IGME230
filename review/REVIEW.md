@@ -795,5 +795,62 @@ Review Questions:
 
 *Shorter syntax and ability to call top-level functions since it doesn't bind this to the element, and, this is bound to the execution element (in some cases, window).*
 
+***
+
+### Web Application 7 ###
+**JavaScript Object Literals**
+
+#### Question 1 ####
+**In programming, what is a literal value?**
+
+*A representation for a fixed value, interpreted in the exact way it is written.*
+
+#### Question 2 ####
+**How do you iterate over the keys and values of an object?**
+
+*By using the for...in or for...of loops, we can go through the keys (object properties) or their values.*
+
+#### Question 3 ####
+**What is the difference between for...in and for...of? (You don't want to get these 2 mixed up!)**
+
+*For...in loops over object properties (a.k.a. keys) and for...of iterates over the object's values.*
+
+#### Question 4 ####
+**List 3 JavaScript value types.**
+
+*Number, String, and Boolean*
+
+#### Question 5 ####
+**List 3 JavaScript reference types.**
+
+*Array, Function, and Object.*
+
+#### Question 6 ####
+**What does Object.seal() do?**
+
+*Object.seal() prevents new properities from being added, but, keeps existing properties editable.*
+
+#### Question 7 ####
+**What does Object.freeze() do?**
+
+*Object.freeze() prevents the addition (and removal) of properties to the sealed object, and makes existing properties immutable.*
+
+#### Question 8 ####
+**What is wrong with the following code?**
+
+```
+var ship = {
+    x: 0,
+    y: 0,
+    speed: 10,
+    move: function() {
+            x += speed;
+            y += speed;
+        }
+}
+```
+
+*The x, y, and speed values should have a 'this' reference in order to be modified.*
+
 *****
 *[Back to Top](#review-questions)*

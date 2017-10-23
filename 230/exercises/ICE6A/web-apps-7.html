@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Web Application 7</title>
+        <link type="text/css" rel="stylesheet" href="css/main.css" />
+        <style>
+            body { 
+                border:1px solid gray;
+            }
+            
+            ol {
+                width: 70%;
+            }
+            
+            a {
+                color: #aa0000;
+                transition: all 0.4s ease;
+            }
+            
+            li {
+                list-style-type: lower-greek;
+
+                margin-top: 0px;
+                border-top: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+                background: transparent;            
+                transition: all 0.4s ease;
+            }
+
+            ol > li:first-child {
+                margin-bottom: 0px;
+            }
+            
+            ol > li:first-child:hover {
+                margin-bottom: 5px;
+            }
+            
+            li:hover {
+                margin-top: 5px;
+                border-top: 1px solid red;
+                border-bottom: 1px solid red;
+                background: #fff;
+
+                transition: all 0.7s ease;
+            }  
+        </style>
+        <script>
+            window.onload = function() {
+                // Be sure to use document.createElement() to create each element.
+                console.log("Be sure that your code uses document.createElement() to create each element.");
+                
+                // Add you favorite colors and foods to the arrays. 
+                console.log("Add you favorite colors and foods to the arrays.");
+                let colors = ["red","green","blue","purple","pink"];
+                let foods = [];
+
+                // Optional (worth an extra 5 points) - can you figure out how to pull the key
+                // and value from the links object literal?
+                let links = {
+                        "RIT": "http://www.rit.edu",
+                        "RWAG" : "https://www.facebook.com/RWAGclub",
+                        "New Media Club" : "http://newmediaclub.cias.rit.edu"
+                    }
+                                
+                // Create the web-apps-7.html file
+                console.log("Create the web-apps-7.html file");
+                
+                // Add you favorite colors and foods to the arrays. 
+                console.log("Add you favorite colors and foods to the arrays.");
+                colors.push("orange","maroon","brown");
+                foods.push("RITz Cheese Crackers","Eggplant","Toast","Waffles","Strawberries","Cheesecake","Cheese");
+                
+                // Write code that loops through the colors array, generates list items, and appends them.
+                console.log("Write code that loops through the colors array, generates list items, and appends them to the appropriate list element.");
+                console.log("\tFor this array use a classic for loop.");
+                
+                let colorList = document.querySelector("#colorsList");
+                for(let i = 0; i < colors.length; i++){
+                    let el_item = document.createElement("li");
+                    let el_item_content = document.createTextNode(colors[i]);  
+                    el_item.style.color = colors[i];
+                    el_item.appendChild(el_item_content);                    
+                    colorList.appendChild(el_item);
+                    console.log("\t\tAdded item: [" + colors[i] + "]");
+                }
+                
+                // Write code that loops through the food array, generates list items, and appends them to the appropriate list element.
+                console.log("Write code that loops through the food array, generates list items, and appends them to the appropriate list element.");
+                console.log("\tFor this array use an ES6 for...of loop.");
+                
+                let foodList = document.querySelector("#foodsList");
+                for(let food of foods){
+                    let el_item = document.createElement("li");
+                    let el_item_content = document.createTextNode(food);
+                    el_item.appendChild(el_item_content);
+                    foodList.appendChild(el_item);
+                    console.log("\t\tAdded item: [" + food + "]");
+                }                
+                
+                // Optional: Add your favorite web sites to the links object literal.
+                console.log("Optional: Add your favorite web sites to the links object literal.");
+                
+                // Create a method to chain addition of websites.
+                console.log("Declaration of push() method. Allows addition of key, value pair to a object literal collection.");
+                function push(collection, key, value) {
+                    console.log("\tpush(): Adding key-value pair: " + "[" + key + ": " + value + "]");
+                    collection[key] = value;
+                }
+                
+                // Add my favorite links to the links object.
+                push(links, "Home Page", "https://people.rit.edu/iae2784/230/");                
+                push(links, "W3 Schools", "https://www.w3schools.com")
+                push(links, "YouTube", "https://www.youtube.com/");
+                
+                // Optional:  Loop through the object, pulling out both the key and the value, generate functioning links, and add them to the last <ol> on the page. This is worth an extra 5 points on the HW assignment. The JavaScript for...in loop will probably get the job done.      
+                console.log("Optional: Loop through object, pulling the key and values out, generate functioning links, and add them to the last list.")
+                
+                let favoriteLinks = document.querySelector("#linksList");
+                for(let link in links){
+                    let el_item = document.createElement("li");                    
+                    let el_link = document.createElement("a");
+                    el_link.innerHTML = link;
+                    el_link.href = links[link];
+                    el_item.appendChild(el_link);   
+                    favoriteLinks.appendChild(el_item);
+                    console.log("\t\tAdded item: [" + link + ": " + links[link] + "]");
+                }
+            
+            }
+        </script>
+    </head>
+    <body>
+        
+        <div id="id_wrapper">
+            <div id="id_message">
+                <h1>Web Application Exercise 7</h1>
+                <p>Please take a look at the developer's console for this page.</p>
+            </div>
+
+            <div id="id_tasks">
+                <h2>Tasks</h2>
+                <p><em>This page accomplishes the following:</em></p>
+                <ol id="id_tasklist">
+                    <li class="cl_listelement">Add your favorite colors and foods to the arrays.</li>
+                    <li class="cl_listelement">Write code that loops through the colors array, generates list items, and appends them to the appropriate list element. For this array use a classic for loop.</li>
+                    <li class="cl_listelement">Write code that loops through the foods array, generates list items, and appends them to the appropriate list element. For this array use an ES6 for...of loop.</li>
+                    <li class="cl_listelement">Be sure that your code uses document.createElement() to create each element.</li>
+                    <li class="cl_listelement">Optional: add your favorite web sites to the links object literal, and then loop through the object, pulling out both the key and the value, generate functioning links, and add them to the last &lsaquo;ul&rsaquo; on the page. This is worth an extra 5 points on the HW assignment. The JavaScript for...in loop will probably get the job done.</li>
+                </ol>            
+            </div>
+        </div>
+        
+        <h1>My Favorites</h1>
+        <h2>My Favorite Colors</h2>
+
+        <ol id="colorsList">
+
+        </ol>
+
+        <h2>My Favorite Foods</h2>
+
+        <ol id="foodsList">
+
+        </ol>
+
+        <h2>My Favorite Links</h2>
+
+        <ol id="linksList">
+
+        </ol>
+        
+        <footer>
+            <p>&copy; Copyright 2017 - Ian Effendi</p>
+            <p class="caption"><a href="index.html">Return to Exercises</a>.</p>
+        </footer>
+        
+    </body>
+</html>
