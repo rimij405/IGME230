@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Pixel Arteur</title>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <link href="css/main.css" type="text/css" rel="stylesheet" />
+        
+        <!-- PIXEL ARTIST HW SCRIPT -->
+        <script type="text/javascript">
+            // Only run script after the page has loaded.
+            window.onload = function () {  
+                
+                // Create a constant object that acts as a namespace (the Easel).
+                const Easel = {
+                    // Declare values we'll need soon.                    
+                    // Number of columns for the canvas.
+                    columns: 30,   
+                    
+                    // Number of rows for the canvas.
+                    rows: 20,
+                    
+                    // Width (in pixels) of a cell.
+                    cellWidth: 25,
+                    
+                    // Space (in pixels) between cells.
+                    cellSpacing: 1,     
+                    
+                    // Collection of cells on the canvas.
+                    cells: [],
+                    
+                    // Color to use.
+                    color: "red",
+                    
+                    // Mouse flag.
+                    mouseIsDown: false,
+                    
+                    // Get reference to grid container, that will hold all of our cells.
+                    container: document.querySelector("#gridContainer"), 
+                    
+                    // Get reference to the color chooser.
+                    selector: document.querySelector("#colorChooser"),
+                    
+                    // Get the clear canvas button.
+                    clearCanvas: document.querySelector("#clearCanvas"),
+                    
+                    // Get the fill canvas button.
+                    fillCanvas: document.querySelector("#fillCanvas"),
+                    
+                    // Create the html element containing the cell.
+                    template: document.createElement('span'),
+                                        
+                    // Initialize the easel.                    
+                    init: function() {
+                        
+                        // Add the cell to the class.
+                        this.template.className = 'cell';
+                        
+                        // Assign event function.
+                        this.container.onclick = this.fillCell;
+                        
+                        // Initialize the canvas by building out the cells.
+                        for(let r = 0; r < this.rows; r++){
+                            this.cells.push([]);
+                            for(let c = 0; c < this.columns; c++) {
+                                let cell = this.template.cloneNode();          
+                                cell.style.left = `${c * (this.cellWidth + this.cellSpacing)}px`;
+                                cell.style.top = `${r * (this.cellWidth + this.cellSpacing)}px`;
+                                this.container.appendChild(cell);
+                                this.cells[r][c] = cell;
+                            }                        
+                        }
+                    },
+                    
+                    // Event function called.
+                    fillCell: function(e) 
+                    {
+                        // Get the cell boundaries.
+                        let rect = Easel.container.getBoundingClientRect();
+                        // console.log("Rect: (" + rect.left +", " + rect.top + ")");
+                        
+                        // Get the location of the mouse.
+                        let mouseX = e.clientX - rect.left;
+                        let mouseY = e.clientY - rect.top;
+                        // console.log("Mouse: (" + mouseX + ", " + mouseY + ")");
+                        
+                        // Get the width.
+                        let width = Easel.cellWidth + Easel.cellSpacing;
+                        // console.log("Width: " + width);
+                        
+                        // Get the row / column numbers.
+                        let c = Math.floor(mouseX / width);
+                        let r = Math.floor(mouseY / width);
+                        // console.log("Cell: (" + c + ", " + r + ")");
+                        
+                        // Get the selected cell.
+                        let selectedCell = Easel.cells[r][c];
+                        selectedCell.className = 'cellSelected';
+                        selectedCell.style.backgroundColor = Easel.color;
+                        // console.log(`${c},${r}`);
+                    }                                
+                }
+                      
+                
+                
+                
+                // Initialize the easel.
+                Easel.init();
+                
+                // Event handlers.
+                Easel.container.onmousemove = (e) => {
+                    e.preventDefault();
+                    if(Easel.mouseIsDown) Easel.fillCell(e);
+                }
+                
+                Easel.container.onmousedown = (e) => {
+                    e.preventDefault();
+                    Easel.mouseIsDown = true;
+                }
+                
+                Easel.selector.onchange = (e) => {
+                    Easel.color = e.target.value;
+                }
+                
+                window.onmouseup = (e) => {
+                    e.preventDefault();
+                    Easel.mouseIsDown = false;
+                }
+                       
+                
+                
+                
+                
+                // Clear canvas button.      
+                Easel.clearCanvas.onclick = (e) => {
+                    // Fill all cells with the current color.                    
+                    // Initialize the canvas by building out the cells.
+                    for(let r = 0; r < Easel.rows; r++){
+                        Easel.cells.push([]);
+                        for(let c = 0; c < Easel.columns; c++) {
+                            let sCell = Easel.cells[r][c];
+                            sCell.className = 'cell';
+                            sCell.style.backgroundColor = '#ddd';
+                        }                        
+                    }
+                }
+                
+                // Fill canvas button.
+                Easel.fillCanvas.onclick = (e) => {
+                    // Fill all cells with the current color.                    
+                    // Initialize the canvas by building out the cells.
+                    for(let r = 0; r < Easel.rows; r++){
+                        Easel.cells.push([]);
+                        for(let c = 0; c < Easel.columns; c++) {
+                            let sCell = Easel.cells[r][c];
+                            sCell.className = 'cellSelected';
+                            sCell.style.backgroundColor = Easel.color;
+                        }                        
+                    }
+                }                
+            };
+        </script>
+    </head>
+    <body>
+        <div id="gridContainer"></div>
+        <h1>Pixel ArTeur</h1>
+        <select id="colorChooser">
+            <option value="aqua">Aqua</option>
+            <option value="Bisque">Bisque</option>
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+            <option value="brown">Brown</option>
+            <option value="chocolate">Chocolate</option>
+            <option value="cyan">Cyan</option>
+            <option value="DarkGray">Dark Gray</option>
+            <option value="green">Green</option>
+            <option value="red" selected>Red</option>
+            <option value="magenta">Magenta</option>
+            <option value="orange">Orange</option>
+            <option value="tan">Tan</option>
+            <option value="white">White</option>
+            <option value="wheat">Wheat</option>
+            <option value="WhiteSmoke">WhiteSmoke </option>
+            <option value="yellow">Yellow</option>
+        </select>
+        <button id="fillCanvas">Fill</button>
+        <button id="clearCanvas">Clear</button>
+    </body>
+</html>
