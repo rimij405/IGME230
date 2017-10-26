@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Giphy Finder</title>
+        <link type="text/css" href="css/main.css" rel="stylesheet" />
+        <script type="text/javascript">
+            // 1
+            window.onload = (e) => {document.querySelector("#search").onclick = getData};
+
+            // 2
+            let displayTerm = "";
+
+            // 3
+            function getData(){
+                // 1
+                const GIPHY_URL = "https://api.giphy.com/v1/gifs/search?";
+                
+                // 2
+                // Public API key from here: https://developers.gifphy.com/docs/
+                const GIPHY_KEY = "dc6zaTOxFJmzC";
+                
+                // 3
+                let url = GIPHY_URL;
+                url += "api_key=" + GIPHY_KEY;
+                
+                // 4
+                let term = document.querySelector("#searchterm").value;
+                displayTerm = term;
+                
+                // 5
+                term = term.trim();
+                
+                // 6
+                term = encodeURIComponent(term);
+                
+                // 7
+                if(term.length < 1) { return; }
+                
+                // 8
+                url += "&q=" + term;
+                
+                // 9
+                let limit = document.querySelector("#limit").value;
+                url += "&limit=" + limit;
+                
+                // 10
+                document.querySelector("#content").innerHTML = "<b>Searching for " + displayTerm + "</b>";
+                
+                // 11
+                console.log(url);                
+            }
+        </script>  
+    </head>
+    <body>
+    <header>
+        <h1>Giphy Finder</h1>
+    </header>
+
+    <div class="widgets">
+        Search Term -> 
+        <input id="searchterm" type="text" size="20" maxlength="20" autofocus value="cats" />
+    </div>
+
+    <div class="widgets">
+        Max # results -> 
+        <select id="limit">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+
+    <div class="widgets">
+        <button type="button" id="search" class="green">Find some GIFs!<br />:-)</button>
+    </div>
+
+    <hr>
+
+    <h2>Results</h2>
+    <div id="content">
+        <p>No data yet!</p>
+    </div>
+    </body>
+</html>
