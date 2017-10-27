@@ -4,13 +4,60 @@
         <meta charset="utf-8" />
         <title>Giphy Finder</title>
         <link type="text/css" href="css/main.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript">
             // 1
             window.onload = (e) => {document.querySelector("#search").onclick = getData};
 
             // 2
             let displayTerm = "";
+            
+            //13
+            let jsonLoaded = function(obj) {
+                // 14 - log out the JSON.
+                console.log("obj = " + obj);
+                // console.log("obj stringified = " + JSON.stringify(obj));
 
+                //15
+                if(!obj.data || obj.data.length == 0){
+                    document.querySelector("#content").innerHTML = `<p><i>No results found for '${displayTerm}'</i><p>`;
+                    $("#content").fadeIn(500);
+                    return; // Bail out.
+                }
+
+                //16 - Loop through the results.
+                let results = obj.data;
+                console.log("results");
+                console.log("results.length = " + results.length);
+                let bigString = `<p><i>Here are ${results.length} results for '${displayTerm}'</i><p>`;
+
+                // 17 start looping.
+                for(let result of results)
+                {
+                    // 18 - Get url to the gif.
+                    let smallURL = result.images.fixed_width_small.url;
+                    if(!smallURL) smallURL = "images/no-image-found.png";
+
+                    // 19
+                    let url = result.url;
+
+                    // 20
+                    var line = `<div class='result'><img src='${smallURL}' title='${result.id}' />`;
+                    line += `<span><a target='_blank' href='${url}'>View on Giphy</a></span></div>`;
+
+                    // 21 was just an alternate way of doing 22.
+
+                    // 22
+                    bigString += line;                    
+                }
+
+                // 23 Add the reuslts to the HTML.
+                document.querySelector("#content").innerHTML = bigString;
+
+                // 24 - Fade it in.
+                $("#content").fadeIn(500);                
+            };
+                
             // 3
             function getData(){
                 // 1
@@ -48,7 +95,20 @@
                 document.querySelector("#content").innerHTML = "<b>Searching for " + displayTerm + "</b>";
                 
                 // 11
-                console.log(url);                
+                console.log(url);
+                console.log(jQuery);
+                console.log($);
+                
+                // 12
+                $.ajax({
+                    dataType: "json",
+                    url: url,
+                    data: null,
+                    success: jsonLoaded // 13's call back function.
+                });
+                            
+                // 25 - Fade out?
+                $("#content").fadeOut(100);                
             }
         </script>  
     </head>
