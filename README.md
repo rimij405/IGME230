@@ -24,11 +24,11 @@ Game Design and Development (BS)
 ## Class Description
 This course provides an introduction to web development tools and technologies, such as X/HTML, CSS, Javascript and DHTML, AJAX, web platforms and environments, and server-side programming methods.
 
-*Please look at the [submissions/](https://github.com/rimij405/IGME230/tree/master/submissions) folder for homework submissions/zip files.*
-*The [230/](https://github.com/rimij405/IGME230/tree/master/230) folder contains the website files.*
+*Please look at the [submissions/](https://github.com/rimij405/IGME230/tree/master/misc/submissions) folder for homework submissions/zip files.*
+*The [230/](https://github.com/rimij405/IGME230/tree/master/) folder contains the website files.*
 
 ## Review
-*To get to the review questions, you can find it in the [review/](https://github.com/rimij405/IGME230/tree/master/review) folder.*
+*To get to the review questions, you can find it in the [review/](https://github.com/rimij405/IGME230/tree/master/misc/review) folder.*
 
 ## Class List
 The class list is a page for section 3 of IGME-230. It can be found here: [https://people.rit.edu/~spbics/230-03.shtml](https://people.rit.edu/~spbics/230-03.shtml).
