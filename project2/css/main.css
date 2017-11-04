@@ -170,12 +170,12 @@ nav:hover {
 main {
     display: block;
     position: static;
+    overflow-y: visible;
+    overflow-x: visible;
     margin-top: 40px;
-    overflow-x: auto;
     
     /* border: 1px solid black; */
     width: 100%;
-    height: 90vh;
 }
 
 section {
@@ -250,7 +250,7 @@ section.panel:hover {
 
 .panel-content-body {
     font-family: 'Abel';
-    font-size: 0.7em;
+    font-size: 1.5em;
     letter-spacing: -0.8px;
     line-height: 1;
     text-align: left;        
@@ -307,6 +307,10 @@ footer:hover {
 }
 
 /* PROJECT */
+audio {
+	display: none;
+}
+
 #project {
     position: relative;
     margin: 0px auto;
@@ -315,8 +319,8 @@ footer:hover {
     
     width: 40vw;
     height: 40vw;
-    min-width: 400px;
-    min-height: 400px;
+    min-width: 320px;
+    min-height: 320px;
     
     background: #B3CCB3;
     border: 2px dashed #fff;
@@ -324,6 +328,47 @@ footer:hover {
     font-weight: normal;    
     box-shadow: 0 0 0 4px #B3CCB3, 2px 1px 6px 4px rgba(10, 0, 0, 0.5);
     transition: transform 1s, box-shadow 1s;
+}
+
+span.cell {	
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid #B3CCB3;
+	background-color: #F7F4EA;
+	position:absolute;
+    
+    transition: background-color 0.9s;
+}
+
+span.cell[data-state="hidden"]
+{
+    background-color: #1F7A8C;
+}
+
+span.cell[data-state="hidden"]:hover,
+span.cell[data-state="hidden"]:focus
+{
+    background-color: #336699;
+}
+
+span.cell[data-state="revealed"]
+{
+    border: 1px solid #B3CCB3;
+    background-color: #F7F4EA;    
+}
+
+span.cell[data-state="revealed"]:hover,
+span.cell[data-state="revealed"]:focus
+{
+    background-color: ##CCCCCC; 
+}
+
+span.selectedCell {
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid #1F7A8C;
+	background-color: #B3CCB3;
+	position:absolute;
 }
 
 .console {
@@ -347,9 +392,36 @@ footer:hover {
     border: 1px solid transparent;
 }
 
-.cell {
-    display: inline-block;
+.instructions {
+    display: block;
+    position: static;
+    margin: 20px 50px;
     
+    text-align: center;
+    overflow:hidden;
+    
+    border: 2px dashed #fff;
+    border-radius: 10px;
+    background: #ddd; 
+    box-shadow: 0 0 0 4px #ddd, 2px 1px 6px 4px rgba(10, 0, 0, 0.5);
+    transition: transform 0.6s, border-color 0.6s, box-shadow 0.6s;
+}
+
+.instructions:hover {    
+    border: 2px dashed #F7F4EA;
+    box-shadow: 0 0 0 5px #ddd, 3px 2px 7px 5px rgba(10, 0, 0, 0.7);
+    transition: transform 0.6s, border-color 0.6s, box-shadow 0.6s;
+}
+
+.instructions p {
+    display: block;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.instructions p:first-child {
+    border-bottom: 1px solid red;
+    font-size: 1.2em;
 }
 
 @media(min-width: 420px) {    
@@ -381,6 +453,10 @@ footer:hover {
         transition: margin 1.3s ease;
     }
     
+    .panel-content-body {
+        font-family: 'Abel';
+        font-size: 0.89em;
+    }
 }
 
 @media(min-width: 720px) {    
@@ -400,7 +476,9 @@ footer:hover {
     }
     
     main {
-        height: 70vh;
+        overflow-y: visible;
+        margin-top: 10vh;
+        min-height: 50vh;
     }
     
     .panel{
@@ -410,7 +488,7 @@ footer:hover {
     }
     
     section {        
-        top: 5vh;
+        top: 0vh;
     }
     
     section.panel:hover {
@@ -425,7 +503,9 @@ footer:hover {
     }    
     
     main {
-        height: auto;
+        overflow-y: visible;
+        margin-top: 5vh;
+        min-height: 90vh;
     }
     
     .line, .panel-title {        
@@ -442,4 +522,32 @@ footer:hover {
     section.panel:hover {
         transform: rotate(7deg);  
     }
+    
+    .console {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        
+        top: 30vh;
+        left: 4.5vw;
+        
+        width: 20vw;
+        height: 20vh;
+        
+    }
+    
+    .instructions {
+        display: block;
+        position: absolute;
+        z-index: 2;
+
+        top: 10vh;
+        left: 2vw;
+
+        width: 20vw;
+        height: 20vh;
+
+        background: #ddd;
+    }
+
 }
