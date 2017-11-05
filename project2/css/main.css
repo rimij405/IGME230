@@ -336,8 +336,16 @@ span.cell {
 	border: 1px solid #B3CCB3;
 	background-color: #F7F4EA;
 	position:absolute;
+
+    text-align: center;
+    font-size: 0.7em;
     
     transition: background-color 0.9s;
+}
+
+span.cell span.text {
+    position: relative;
+    top: 25%;
 }
 
 span.cell[data-state="hidden"]
@@ -355,6 +363,11 @@ span.cell[data-state="revealed"]
 {
     border: 1px solid #B3CCB3;
     background-color: #F7F4EA;    
+}
+
+span.cell[data-mine="armed"][data-state="revealed"]
+{
+    background-color: red;
 }
 
 span.cell[data-state="revealed"]:hover,
