@@ -75,6 +75,9 @@ let Services = {
 // Entry point for the program.
 function init() 
 {    
+    
+    /* SET UP DATA MEMBERS */
+    
     // Contains keys for elements that may need to be retrieved during runtime.
     const Keys = {
         project: "#project",
@@ -82,15 +85,10 @@ function init()
         console: ".console",
         minesLeft: "#minesLeft",
         timeStart: "#timeStart",
+        score: "#score",
         span: "span"
     };
 
-    // Set reference to the containing panel.
-    const panel = getElement(Keys.container);
-    const minesRemaining = getElement(Keys.minesLeft);
-    const timeSinceStart = getElement(Keys.timeStart);
-    let cellCount = 0;
-    
     // Minesweeper.
     const Minesweeper = {
         mineCount: 0,
@@ -99,26 +97,34 @@ function init()
         score: 0
     }
     
-    // Add event handler to the panel.
-    panel.addEventListener("click", function(e){
-        let rect = panel.getBoundingClientRect();
-        let mouseX = e.clientX - rect.left;
-        let mouseY = e.clientY - rect.top;
-        let width = getCellWidth(panel.clientWidth, Easel.cols, Easel.padding) + Easel.padding;
-        let c = Math.floor(mouseX / width);
-        let r = Math.floor(mouseY / width);        
-        handleCell(Easel.cells[r][c]);
-        print(`Clicked: ${toString(getCell(r, c))}.`);
-    });
-        
-    // Creates a span object.
-    const span = document.createElement(Keys.span);
-    span.className = "cell";
+    // Reference to properties.
+    const Controller = {
+        // Last frame in milliseconds.
+        LastFrame: 0,
+        // Change in time.
+        DeltaTime: 0, 
+        // Frames per second.
+        FPS: 60,
+        // Frames this second.
+        FTS: 0,
+        // Last FPS update.
+        LastFPSUpdate: 0,
+        // Time since the start (in milliseconds).
+        SinceStart: 0,
+        // Starting date.
+        StartDate: undefined,
+        // Timestep.
+        Timestep: (1000 / 60),
+        // Maximum FPS (throttling behaviour).
+        MaxFPS: 15,
+        // Flag tracking status.
+        UpdateCount: 0,
+        IsRunning: false,
+        IsStarted: false,
+        IsComplete: false,
+        FrameID: undefined
+    };
     
-    // Creates a span object for text.
-    const textSpan = document.createElement(Keys.span);
-    textSpan.className = "text";
-
     // The easel object literal keeps track of the cell information.
     let Easel = {
         cols: 8,
@@ -127,6 +133,56 @@ function init()
         padding: 1,
         cells: []
     };
+    
+    // Set reference to the containing panel.
+    const panel = getElement(Keys.container);
+    const minesRemaining = getElement(Keys.minesLeft);
+    const timeSinceStart = getElement(Keys.timeStart);
+    let cellCount = 0;
+        
+    /* SET UP EVENT LISTENERS */
+    
+    // Add event handler to the panel.
+    panel.addEventListener("click", function(e){
+        if(!Controller.IsComplete){
+            let rect = panel.getBoundingClientRect();
+            let mouseX = e.clientX - rect.left;
+            let mouseY = e.clientY - rect.top;
+            let width = getCellWidth(panel.clientWidth, Easel.cols, Easel.padding) + Easel.padding;
+            let c = Math.floor(mouseX / width);
+            let r = Math.floor(mouseY / width);        
+            handleCell(Easel.cells[r][c]);
+            print(`Clicked: ${toString(getCell(r, c))}.`);
+        }
+    });
+        
+    // Add event handler to the panel (on right click).
+    panel.addEventListener("contextmenu", function(e){
+        e.preventDefault(); // Prevent context menu from appearing.
+        if(!Controller.IsComplete){
+            let rect = panel.getBoundingClientRect();
+            let mouseX = e.clientX - rect.left;
+            let mouseY = e.clientY - rect.top;
+            let width = getCellWidth(panel.clientWidth, Easel.cols, Easel.padding) + Easel.padding;
+            let c = Math.floor(mouseX / width);
+            let r = Math.floor(mouseY / width);        
+            handleFlag(Easel.cells[r][c]);
+            print(`Right-clicked: ${toString(getCell(r, c))}.`);
+        }
+        return false;
+    }, false); 
+    
+   
+    /* CREATE BLUEPRINT NODES */
+    
+    // Creates a span object.
+    const span = document.createElement(Keys.span);
+    span.className = "cell";
+    
+    // Creates a span object for text.
+    const textSpan = document.createElement(Keys.span);
+    textSpan.className = "text";
+
     
     // Returns an element from the given input selector.
     function getElement(key)
@@ -210,12 +266,12 @@ function init()
             let cell = randomCell();
             if(!contains(cells, cell))
             {
-                print(`${toString(cell)} not contained within list.`);
+                // print(`${toString(cell)} not contained within list.`);
                 cells.push(cell);
             } 
             else
             {
-                print(`${toString(cell)} is contained within list.`);
+                // print(`${toString(cell)} is contained within list.`);
             }
         }
         
@@ -243,29 +299,144 @@ function init()
     }
     
     // Handles the selected cell.
-    function handleCell(cell)
+    function handleCell(cell, times)
     {
-        if(isHidden(cell)) {
-            
-            // Reveal the cell.
-            revealCell(cell);  
-            
-            // If it is a mine adjust mine count.
-            if(isMine(cell))
+        let count = times;
+        let points = 0;
+        let seconds = 0;
+        
+        if(times === undefined)
+        {
+            count = 0;
+        }
+        
+        // If the cell is not undefined, set the flag.
+        if(cell !== undefined)
+        {
+            // If this is a hidden cell.
+            if(isHidden(cell)) 
             {
-                Minesweeper.foundMines++;
-                Minesweeper.mineCount--;
-                updateMinesRemaining(Minesweeper.mineCount);
-            }
-            else
-            {
-                let text = textSpan.cloneNode();                
-                let value = document.createTextNode(getNeighborMineCount(cell));
-                text.appendChild(value);
-                cell.appendChild(text);
-            }  
-        }   
+                // Reveal the cell.
+                revealCell(cell);
+                
+                // If this is a mine:
+                if(isMine(cell))
+                {
+                    // If it is a mine adjust mine count.
+                    Minesweeper.mineCount--;
+                    
+                    // If the flag is marked as a guess, we diffuse the mine!
+                    if (isFlag(cell, "guess")) 
+                    {
+                        Minesweeper.foundMines++;
+                        diffuseMine(cell);
+
+                        // Set a base score of ten points for successful diffusion.
+                        points = 50;    
+                        
+                        // Add points based on time that has passed, if less than a minute.
+                        seconds = Math.floor(Controller.SinceStart / 1000);
+                        if(seconds < 60) { points += (60 - seconds); }
+                        
+                        // Add points based on number of mines remaining.
+                        points += Minesweeper.totalMineCount - Minesweeper.mineCount;
+                        
+                        // Add more points for number of mines found.
+                        points += Minesweeper.foundMines;
+
+                        // Add to score.
+                        Minesweeper.score += Math.round(points);
+
+                        // Update the score.
+                        updateScore();
+                    }
+                    else 
+                    {
+                        print("You have exploded.");
+                        
+                        // Stop the counter, since we've exploded.
+                        endGame();
+                    }
+                    
+                    updateMinesRemaining(Minesweeper.mineCount);                    
+                } 
+                else
+                {
+                    // If NOT a mine.     
+                    if(count <= 2){
+                        // Get neighbors.
+                        let neighbors = getNeighboringCells(cell);
+                        for(let neighbor of neighbors)
+                        {
+                            if(!isMine(neighbor) && (getNeighborMineCount(neighbor) <= 1))
+                            {
+                                handleCell(neighbor, count + 1);
+                            }
+                        }
+                    }
+
+                    // Add a base score of 10 for every revealed non-mine.
+                    points = 10;             
+                    
+                    // Subtract 5 points from base value if it's been marked as unsure.
+                    if(isFlag(cell, "marker")){ points -= 5; }
+                    // Double value if it's been left unflagged.
+                    if(isUnflagged(cell)){ points *= 2; }       
+                    // Halve value if it's been marked as a guess.
+                    if(isFlag(cell, "guess")) { points *= 0.5; }
+                    
+                    // Add points based on number of mines remaining.
+                    points += Minesweeper.totalMineCount - Minesweeper.mineCount;
+                    
+                    // Add points based on time that has passed, if less than a minute.
+                    seconds = Math.floor(Controller.SinceStart / 1000);
+                    if(seconds < 60) { points += (60 - seconds); }
+                    
+                    // Add to score.
+                    Minesweeper.score += Math.round(points);
+                    
+                    // Update the score.
+                    updateScore();
+                    
+                    cell.querySelector(".text").innerHTML = getNeighborMineCount(cell);                    
+                }                
+            }            
+        }
     }    
+    
+    // Handles right clicking on a selected cell.
+    function handleFlag(cell)
+    {
+        // If the cell is not undefined, set the flag.
+        if(cell !== undefined)
+        {
+            // If the cell is hidden:
+            if(isHidden(cell))
+            {
+                let flag = cell.dataset.flag;
+                
+                // If the cell is unflagged, set flag to guess.
+                if(isUnflagged(cell))
+                {
+                    setFlag(cell, "guess");
+                    cell.querySelector(".text").innerHTML = "!";
+                } 
+                else if(isFlag(cell, "guess"))
+                {
+                    setFlag(cell, "marker");    
+                    cell.querySelector(".text").innerHTML = "?";
+                } 
+                else if(isFlag(cell, "marker"))
+                {
+                    setFlag(cell, "unflagged");    
+                    cell.querySelector(".text").innerHTML = "";
+                }
+            }            
+        }
+        
+        // Returns false to prevent context menu from appearing.
+        return false;
+    }
     
     // Creates a debug message containing the input cell's information.
     function toString(cell)
@@ -275,8 +446,9 @@ function init()
         }              
         
         let location = getLocation(cell);
+        let flag = getFlag(cell);
         
-        let message = `${getName(cell)} ${cell.dataset.mine} at (${location[0]}, ${location[1]}). This cell has ${getNeighborMineCount(cell)} neighboring mines.`;
+        let message = `${getName(cell)} ${cell.dataset.mine} at (${location[0]}, ${location[1]}). This cell has flag ${flag}. This cell has ${getNeighborMineCount(cell)} neighboring mines.`;
         return message;        
     }
     
@@ -331,6 +503,49 @@ function init()
         return "Undefined cell.";
     }
         
+    // Check if cell is unflagged.
+    function isUnflagged(cell)
+    {
+        if(cell !== undefined)
+        {
+            return (getFlag(cell) === "unflagged");
+        }
+        
+        // Null/undefined cells can never be flagged.
+        return true;
+    }
+    
+    // Check if the cell matches the input value.
+    function isFlag(cell, value)
+    {        
+        if(cell !== undefined)
+        {
+            return (getFlag(cell) === value);
+        }
+        
+        // Null/undefined cells can never be flagged.
+        return false;
+    }
+    
+    // Set the flag of the cell.
+    function setFlag(cell, value)
+    {
+        if(cell !== undefined)
+        {
+            cell.dataset.flag = value;
+        }    
+    }
+    
+    // Get the flag of the cell.
+    function getFlag(cell)
+    {
+        if(cell !== undefined)
+        {
+            return cell.dataset.flag;
+        }    
+        return "Undefined cell.";
+    }
+    
     // Set location value on the cell.
     function setLocation(cell, x, y)
     {   
@@ -400,7 +615,14 @@ function init()
         hideCell(cell);
         setLocation(cell, x, y);
         setName(cell);
+        setFlag(cell, "unflagged");
         disarmMine(cell);
+        
+        // Add the text node to the cells.
+        let text = textSpan.cloneNode();                
+        let value = document.createTextNode("");
+        text.appendChild(value);
+        cell.appendChild(text);
         
         // Set up the styling.
         cell.style.left = `${x * (Easel.width + Easel.padding)}px`;
@@ -577,7 +799,7 @@ function init()
     {
         if(cell !== undefined)
         {
-            return (cell.dataset.mine === "armed");
+            return (cell.dataset.mine === "armed" || cell.dataset.mine === "diffused");
         }
     }
     
@@ -599,6 +821,16 @@ function init()
         }
     }
     
+    // Diffuse a mine.
+    function diffuseMine(cell)
+    {
+        if(cell !== undefined)
+        {
+            cell.dataset.mine = "diffused";
+            cell.querySelector(".text").innerHTML = "&copy;";
+        }
+    }
+    
     // Update the count for remaining mines.
     function updateMinesRemaining(number)
     {
@@ -611,33 +843,6 @@ function init()
         timeSinceStart.innerHTML = number;
     }
     
-    // Reference to properties.
-    const Controller = {
-        // Last frame in milliseconds.
-        LastFrame: 0,
-        // Change in time.
-        DeltaTime: 0, 
-        // Frames per second.
-        FPS: 60,
-        // Frames this second.
-        FTS: 0,
-        // Last FPS update.
-        LastFPSUpdate: 0,
-        // Seconds since the start.
-        SinceStart: 0,
-        // Starting date.
-        StartDate: undefined,
-        // Timestep.
-        Timestep: (1000 / 60),
-        // Maximum FPS (throttling behaviour).
-        MaxFPS: 15,
-        // Flag tracking status.
-        UpdateCount: 0,
-        IsRunning: false,
-        IsStarted: false,
-        FrameID: undefined
-    };
-    
     // The start method.
     function start() 
     {
@@ -648,8 +853,9 @@ function init()
                 function(timestamp) {
                     buildCells();
                     layMines();
-                    Minesweeper.score = 100;
+                    Minesweeper.score = 0;
                     draw(1);
+                    Controller.IsComplete = false;
                     Controller.IsRunning = true;
                     Controller.LastFrame = timestamp;
                     Controller.LastFPSUpdate = timestamp;
@@ -672,109 +878,119 @@ function init()
             start();
             return;
         }
-        
-        // Throttle frame rate based on imposed restrictions.
-        if (timestamp < Controller.LastFrame + (1000 / Controller.MaxFPS))
-        {
-            Controller.FrameID = requestAnimationFrame(cycle);
-            return;
-        }
-        
-        // Update the FPS count.
-        if (timestamp > Controller.LastFPSUpdate + 1000) 
-        {
-            // Calculate the new FPS.
-            Controller.FPS = 0.25 * Controller.FTS + (1 - 0.25) * Controller.FPS
-            Controller.LastFPSUpdate = timestamp;
-            Controller.FTS = 0; 
-        }
-        Controller.FTS++;
-     
-        // Track delta time.
-        Controller.DeltaTime += timestamp - Controller.LastFrame;
-        Controller.LastFrame = timestamp;
-        
-        // Keep track of how many simulated timesteps have passed (and ensure it won't freeze up our program).
-        Controller.UpdateCount = 0;
-        while(Controller.DeltaTime >= Controller.Timestep) {
-            update(Controller.Timestep);
-            Controller.DeltaTime -= Controller.Timestep;
-            if(++Controller.UpdateCount >= 240)
+                
+        if(Controller.IsRunning) {        
+            // Throttle frame rate based on imposed restrictions.
+            if (timestamp < Controller.LastFrame + (1000 / Controller.MaxFPS))
             {
-                panic();
-                break;
+                Controller.FrameID = requestAnimationFrame(cycle);
+                return;
             }
-        }
-        
-        // Render any changes that need to be made, since the updates.
-        draw();
-        
-        if(Controller.SinceStart >= 10) 
-        {
-            stop();
-        } 
-        else 
-        {
-            Controller.FrameID = requestAnimationFrame(cycle);
-        }
+
+            // Update the FPS count.
+            if (timestamp > Controller.LastFPSUpdate + 1000) 
+            {
+                // Calculate the new FPS.
+                Controller.FPS = 0.25 * Controller.FTS + (1 - 0.25) * Controller.FPS
+                Controller.LastFPSUpdate = timestamp;
+                Controller.FTS = 0; 
+            }
+            Controller.FTS++;
+
+            // Track delta time.
+            Controller.DeltaTime += timestamp - Controller.LastFrame;
+            Controller.LastFrame = timestamp;
+
+            // Keep track of how many simulated timesteps have passed (and ensure it won't freeze up our program).
+            Controller.UpdateCount = 0;
+            while(Controller.DeltaTime >= Controller.Timestep) {
+                update(Controller.Timestep);
+                Controller.DeltaTime -= Controller.Timestep;
+                if(++Controller.UpdateCount >= 240)
+                {
+                    panic();
+                    break;
+                }
+            }
+
+            // Render any changes that need to be made, since the updates.
+            draw();
+
+            // If there are no mines left, stop.
+            if(Minesweeper.mineCount === 0)
+            {
+                endGame();
+            }        
+        }                
+        // Get the next frame.
+        Controller.FrameID = requestAnimationFrame(cycle);
+    }
+    
+    // The update method will update what needs to be updated for this game loop.
+    function update(delta) 
+    {
+        updateTime(delta);
+        updateScore(delta);
     }
     
     // Update the time since start.
     function updateTime(delta) 
     {        
         // Update the time since start.
-        let difference = delta;
+        /* let difference = Date.now() - Controller.StartDate;        
         let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        let seconds = Math.floor((difference % (1000 * 60)) / 1000);  
         Controller.SinceStart = Math.floor(difference / 1000); // Divide the milliseconds by 1000 to get the total amount of seconds.
-        print("Seconds since start: " + Controller.SinceStart);
+        print("Seconds since start: " + Controller.SinceStart); */
         
-        let minutesString = "" + minutes;
-        let secondsString = "" + seconds;
+        Controller.SinceStart += delta; // Add the timestep.let minutes = Math.floor(Controller.SinceStart / (1000 * 60));
+        let minutes = Math.floor(Controller.SinceStart / (1000 * 60));
+        let seconds = Math.floor(Controller.SinceStart / 1000);
+        
+        let min = padString(String(minutes), 2, "0");
+        let sec = padString(String(seconds), 2, "0");
 
-        if(minutesString.length < 2)
-        {
-            minutesString = "0" + minutesString;
+        // print("Seconds since start: " + Math.floor(Controller.SinceStart / 1000));
+        updateTimeSinceStart(`${min}:${sec}`);
+    }
+    
+    // Adds a string to the front of a string until it matches the input length.
+    function padString(message, size, padding)
+    {
+        let padded = padding;
+        
+        if(message === undefined || message.length === 0) {
+            return padded;
         }
-
-        if(secondsString.length < 2)
+        
+        // Assign input message.
+        padded = message;        
+        
+        if(padded.length >= size)
         {
-            secondsString = "0" + secondsString;
+            return padded;
         }
-
-        updateTimeSinceStart("" + minutesString + ":" + secondsString);
+        
+        while(padded.length < size)
+        {
+            let temp = padding + padded;
+            padded = temp.substr(-size);
+        }        
+        
+        return padded;
     }
     
     // Update the score count.
     function updateScore()
     {
-        Minesweeper.score = 100 - Controller.SinceStart; 
-        Minesweeper.score -= (Minesweeper.foundMines * 10);
-    }
-    
-    // The update method will update what needs to be updated for this game loop.
-    function update(delta) 
-    {
-        let timeDelta = Date.now() - Controller.StartDate;
-        updateTime(timeDelta);
-        updateScore();
-    }
+        let score = getElement(Keys.score);
+        score.innerHTML = `${Minesweeper.score} point(s).`;
+    }    
     
     // The draw function will update anything that needs to be moved on screen.
     function draw()
     {
-        print("Draw at " + Math.round(Controller.FPS) + " FPS.");
-        
-        print("Score: " + Minesweeper.score);
-        
-        let cell = randomCell();
-        print(`Random cell: ${toString(cell)}`);  
-        
-        let neighbors = getNeighboringCells(cell);
-        for(let neighbor of neighbors)
-        {
-            print(`Found neighbor of ${getName(cell)}: ${toString(neighbor)}.`);
-        }
+        // Nothing.
     }
 
     // This is called when the frame rate gets so out of whack that we need to reset our delta.
@@ -783,9 +999,34 @@ function init()
         Controller.DeltaTime = 0;
     }
 
+    function endGame() 
+    {
+        // Reveal all squares.
+        for(let r = 0; r < Easel.rows; r++)
+        {
+            for(let c = 0; c < Easel.cols; c++)
+            {
+                let cell = getCell(r, c);
+                
+                if(cell.dataset.state === "hidden")
+                {                
+                    cell.dataset.state = "unfound";                    
+                }
+                
+                if(cell.dataset.mine !== "armed" && cell.dataset.mine !== "diffused")
+                {
+                    cell.querySelector(".text").innerHTML = getNeighborMineCount(cell);
+                }                
+            }
+        }
+        
+        Controller.IsComplete = true;
+    }
+    
     // Stop calling function.
     function stop()
     {
+        Controller.IsComplete = false;
         Controller.IsRunning = false;
         Controller.IsStarted = false;
         cancelAnimationFrame(Controller.FrameID);
@@ -801,5 +1042,8 @@ function init()
 // Run this on window load.
 window.onload = function() {
     print("Window loaded.");
-    init();
+    let startButton = document.querySelector("#restart").addEventListener("click", function(e){
+        init();
+    });
 };
+

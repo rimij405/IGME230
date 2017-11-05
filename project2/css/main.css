@@ -330,6 +330,7 @@ audio {
     transition: transform 1s, box-shadow 1s;
 }
 
+/* Cell CSS. */
 span.cell {	
 	display: inline-block;
 	border-radius: 5px;
@@ -338,50 +339,111 @@ span.cell {
 	position:absolute;
 
     text-align: center;
-    font-size: 0.7em;
+    font-size: 1em;
     
     transition: background-color 0.9s;
 }
 
+/* Cell contents. */
 span.cell span.text {
     position: relative;
-    top: 25%;
+    top: 30%;
 }
 
+/* CSS for hidden, unflagged cell. */
 span.cell[data-state="hidden"]
-{
-    background-color: #1F7A8C;
-}
-
-span.cell[data-state="hidden"]:hover,
-span.cell[data-state="hidden"]:focus
 {
     background-color: #336699;
 }
 
-span.cell[data-state="revealed"]
+/* Hover CSS for hidden, unflagged cell. */
+span.cell[data-state="hidden"]:hover,
+span.cell[data-state="hidden"]:focus
+{
+    color: black;
+    background-color: #339999;
+}
+
+/* CSS for hidden, guess cell. */
+span.cell[data-state="hidden"][data-flag="guess"]
+{
+    color: black;
+    background-color: #339966;
+}
+
+/* CSS for hidden, marker cell. */
+span.cell[data-state="hidden"][data-flag="marker"]
+{
+    color: #ccff66;
+    background-color: #666666;
+}
+
+/* CSS for revealed, unflagged cell, unarmed cell. */
+span.cell[data-state="revealed"],
+span.cell[data-mine="unarmed"][data-state="revealed"]
 {
     border: 1px solid #B3CCB3;
     background-color: #F7F4EA;    
 }
 
+/* CSS for revealed, unflagged cell, armed cell. */
 span.cell[data-mine="armed"][data-state="revealed"]
 {
     background-color: red;
 }
 
+/* Hover CSS for revealed, unflagged cell, armed cell. */
 span.cell[data-state="revealed"]:hover,
 span.cell[data-state="revealed"]:focus
 {
-    background-color: ##CCCCCC; 
+    background-color: #CCCCCC; 
 }
 
-span.selectedCell {
-	display: inline-block;
-	border-radius: 5px;
-	border: 1px solid #1F7A8C;
-	background-color: #B3CCB3;
-	position:absolute;
+/* CSS for revealed, guess cell, diffused cell. */
+span.cell[data-mine="diffused"][data-state="revealed"]
+{
+    background-color: #996666;
+}
+
+/* CSS for unfound, unarmed cells.*/
+span.cell[data-state="unfound"]
+{
+    background-color: #c0c0c0;
+}
+
+/* Hover CSS for unfound, unarmed cells.*/
+span.cell[data-state="unfound"]:hover,
+span.cell[data-state="unfound"]:focus
+{
+    background-color: #e0e0e0;
+}
+
+/* CSS for unfound, armed cells.*/
+span.cell[data-mine="armed"][data-state="unfound"]
+{
+    background-color: #cc3366;
+}
+
+/* CSS for unfound, diffused cells.*/
+span.cell[data-mine="diffused"][data-state="unfound"]
+{
+    background-color: #cccccc;
+}
+
+/* CSS for revealed, guess cell, unarmed cell. */
+
+/* CSS for revealed, guess cell, armed cell. */
+
+.buttons {
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    margin-top: 20vh;
+    width: 40vw;
+    margin: 0 auto;
+}
+
+.buttons div {
 }
 
 .console {
