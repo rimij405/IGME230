@@ -78,11 +78,11 @@ function init()
 {        
     
     /* SET UP DATA MEMBERS */
-    let loseSFX = new Audio('../media/lose.mp3');
-    let winSFX = new Audio('../media/win.mp3');
-    let goodSFX_01 = new Audio('../media/sfx01.mp3');
-    let goodSFX_02 = new Audio('../media/sfx02.mp3');
-    let goodSFX_03 = new Audio('../media/sfx02.mp3');
+    let loseSFX = new Audio('media/lose.mp3');
+    let winSFX = new Audio('media/win.mp3');
+    let goodSFX_01 = new Audio('media/sfx01.mp3');
+    let goodSFX_02 = new Audio('media/sfx02.mp3');
+    let goodSFX_03 = new Audio('media/sfx02.mp3');
     
     // Contains keys for elements that may need to be retrieved during runtime.
     const Keys = {
