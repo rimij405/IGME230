@@ -94,6 +94,7 @@ nav {
     left: 0px;
     right: 0px;
     text-align: center;
+    z-index: 10;
     
     padding-top: 0%;   
     background: #fff;
@@ -129,7 +130,7 @@ nav:hover {
     border-bottom: 2px dashed red;
 }
 
-.navigation-link:focus-within {
+.navigation-link:focus {
     border-bottom: 2px solid #1F7A8C;
 }
 
@@ -220,6 +221,29 @@ section.panel:hover {
     transform: rotate(9deg);  
 }
 
+#requirements {
+    text-align: left;
+    padding: 0px;
+    transition: padding 0.8s, top 0.8s;
+}
+
+#requirements ul li {
+    position: relative;
+    padding: 5px;  
+    
+    top: 2px;
+    
+    text-align: left;
+    background-color: transparent;
+    transition: padding 0.8s, top 0.8s, background-color 0.8s;
+}
+
+#requirements ul li:hover {
+    top: -2px;
+    background-color: #F7F4EA;    
+    transition: padding 0.8s, top 0.8s, background-color 0.8s;
+}
+
 .line, .panel-title {
     display: block;
     position: static;
@@ -284,6 +308,8 @@ footer {
     border-top: 1px solid transparent;  
     border-bottom: 2px solid #1F7A8C;
     
+    z-index: 5;
+    
     font-size: 0.8em;
     background: #fff;  
     transition: border-top 1.3s ease-in,
@@ -322,12 +348,43 @@ audio {
     min-width: 320px;
     min-height: 320px;
     
-    background: #B3CCB3;
+    background-color: #B3CCB3;
     border: 2px dashed #fff;
     border-radius: 10px;
     font-weight: normal;    
     box-shadow: 0 0 0 4px #B3CCB3, 2px 1px 6px 4px rgba(10, 0, 0, 0.5);
     transition: transform 1s, box-shadow 1s;
+}
+
+.result, .welcome {
+    display: none;
+}
+
+.result[data-display="show"] {
+    display: block;
+    position: absolute;
+    
+    border-radius: 5px;
+    background-color: #ddd;
+    
+    text-align: center;
+    
+    left: 10%;
+    right: 10%;
+    bottom: 40%;
+    
+    z-index: 3;
+}
+
+.welcome[data-display="show"] {
+    display: block;
+    position: absolute;
+    
+    text-align: center;
+    
+    left: 0px;
+    right: 0px;
+    bottom: 25%;
 }
 
 /* Cell CSS. */
@@ -430,20 +487,35 @@ span.cell[data-mine="diffused"][data-state="unfound"]
     background-color: #cccccc;
 }
 
-/* CSS for revealed, guess cell, unarmed cell. */
-
-/* CSS for revealed, guess cell, armed cell. */
-
 .buttons {
-    display: block;
+    display: block;  
     position: relative;
-    margin: 0px auto;
-    margin-top: 20vh;
-    width: 40vw;
-    margin: 0 auto;
+    margin-bottom: 15px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
 }
 
-.buttons div {
+#restart {
+    display: block;
+    position: relative;
+    margin: 5px auto;
+    padding: 5px 0px;
+    
+    top: 0px;
+    width: 70%;
+    
+    border-radius: 5px;
+    background-color: #cccccc;
+    transition: top 0.8s ease, background-color 0.8s ease;
+}
+
+#restart:hover,
+#restart:focus {
+    cursor: pointer;
+    top: -5px;
+    background-color: #B3CCB3;
+    transition: top 0.8s ease, background-color 0.8s ease;
 }
 
 .console {
@@ -469,11 +541,12 @@ span.cell[data-mine="diffused"][data-state="unfound"]
 
 .instructions {
     display: block;
-    position: static;
-    margin: 20px 50px;
+    position: relative;
+    margin: 0px 25%;
+    margin-top: 5%;
     
     text-align: center;
-    overflow:hidden;
+    overflow: hidden;
     
     border: 2px dashed #fff;
     border-radius: 10px;
@@ -490,11 +563,37 @@ span.cell[data-mine="diffused"][data-state="unfound"]
 
 .instructions p {
     display: block;
-    padding: 5px;
-    font-size: 1em;
+    position:relative;
+    top: 2px;
+    margin: 1px auto;
+    font-size: 1em;    
+    
+    color: black;
+    background-color: transparent;   
+    border-bottom: 1px solid transparent;
+    
+    transition: top 0.8s,
+        color 0.8s,
+        background-color 0.8s;
 }
 
-.instructions p:first-child {
+.instructions p:hover {
+    cursor: default;
+    top: -4px;
+    
+    color: #212121;
+    background-color: #F7F4EA;
+    border-bottom: 1px solid red;
+    
+    transition: top 0.8s,
+        color 0.8s,
+        background-color 0.8s;
+}
+
+.instructions h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 5px;
     border-bottom: 1px solid red;
     font-size: 1.2em;
 }
@@ -569,6 +668,19 @@ span.cell[data-mine="diffused"][data-state="unfound"]
     section.panel:hover {
         transform: rotate(-9deg);  
     }
+    
+    .instructions {
+        display: block;
+        position: relative;
+        margin-bottom: 150px;
+    }
+    
+    .instructions p {
+        padding: 0px 10px;
+        margin-bottom: 7px;
+        text-align: left;
+        line-height: 1;        
+    }
 }
 
 @media(min-width: 980px) {    
@@ -600,29 +712,10 @@ span.cell[data-mine="diffused"][data-state="unfound"]
     
     .console {
         display: block;
-        position: absolute;
+        position: relative;
         z-index: 2;
-        
-        top: 30vh;
-        left: 4.5vw;
-        
+                
         width: 20vw;
-        height: 20vh;
-        
+        height: 20vh;        
     }
-    
-    .instructions {
-        display: block;
-        position: absolute;
-        z-index: 2;
-
-        top: 10vh;
-        left: 2vw;
-
-        width: 20vw;
-        height: 20vh;
-
-        background: #ddd;
-    }
-
 }

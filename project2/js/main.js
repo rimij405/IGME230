@@ -2,10 +2,11 @@
 /*
     Main.js
     Contains the main game loop.
-    (Ian Effendi)
+    (Ian Effendi) [iae2784]
 */
 // Set up constants and global references.
-const debugmode = true; // Debug mode flag.
+const debugmode = false; // Debug mode flag.
+let running = false;
 
 // Print message if debug mode is on.
 function print(message)
@@ -74,9 +75,14 @@ let Services = {
 
 // Entry point for the program.
 function init() 
-{    
+{        
     
     /* SET UP DATA MEMBERS */
+    let loseSFX = new Audio('../media/lose.mp3');
+    let winSFX = new Audio('../media/win.mp3');
+    let goodSFX_01 = new Audio('../media/sfx01.mp3');
+    let goodSFX_02 = new Audio('../media/sfx02.mp3');
+    let goodSFX_03 = new Audio('../media/sfx02.mp3');
     
     // Contains keys for elements that may need to be retrieved during runtime.
     const Keys = {
@@ -94,7 +100,9 @@ function init()
         mineCount: 0,
         totalMineCount: 0,
         foundMines: 0,
-        score: 0
+        score: 0,
+        maxFlags: 5,
+        flags: 0
     }
     
     // Reference to properties.
@@ -319,9 +327,15 @@ function init()
                 // Reveal the cell.
                 revealCell(cell);
                 
+                // If the cell had a flag, fix the count.
+                if(cell.dataset.flag !== "unflagged")
+                {
+                    Minesweeper.flags--;
+                }
+                
                 // If this is a mine:
                 if(isMine(cell))
-                {
+                {   
                     // If it is a mine adjust mine count.
                     Minesweeper.mineCount--;
                     
@@ -329,14 +343,15 @@ function init()
                     if (isFlag(cell, "guess")) 
                     {
                         Minesweeper.foundMines++;
-                        diffuseMine(cell);
-
+                        diffuseMine(cell);                                           
+                        Minesweeper.maxFlags = Minesweeper.mineCount;
+                        
                         // Set a base score of ten points for successful diffusion.
                         points = 50;    
                         
                         // Add points based on time that has passed, if less than a minute.
                         seconds = Math.floor(Controller.SinceStart / 1000);
-                        if(seconds < 60) { points += (60 - seconds); }
+                        if(seconds < 60) { points += (60 - seconds) / 10; }
                         
                         // Add points based on number of mines remaining.
                         points += Minesweeper.totalMineCount - Minesweeper.mineCount;
@@ -349,10 +364,47 @@ function init()
 
                         // Update the score.
                         updateScore();
+                        
+                        // If minecount is zero, we can end the game AND reveal all empty squares.
+                        if(Minesweeper.mineCount === 0)
+                        {
+                            // Reveal all tiles.
+                            for(let x = 0; x < Easel.rows; x++)
+                            {
+                                for (let y = 0; y < Easel.cols; y++)
+                                {
+                                    let cell = getCell(x, y);
+                                    
+                                    if(isHidden(cell) && !isMine(cell))
+                                    {
+                                        handleCell(cell);
+                                    }
+                                }
+                            }
+                        
+                            // Play the right sfx.
+                            winSFX.play();
+                            
+                            let message = document.querySelector(".result");
+                            message.dataset.display = "show";   
+                            message.innerHTML = "You won and defused all " + Minesweeper.foundMines + " mine(s).";
+                            
+                            endGame();
+                        }           
+                        else 
+                        {
+                            // Play the right sfx.
+                            goodSFX_02.play();                            
+                        }
                     }
                     else 
                     {
-                        print("You have exploded.");
+                        // Play the right sfx.
+                        loseSFX.play();
+                        
+                        let message = document.querySelector(".result");
+                        message.dataset.display = "show";                            
+                        message.innerHTML = "You exploded! You found " + Minesweeper.foundMines + " mine(s).";
                         
                         // Stop the counter, since we've exploded.
                         endGame();
@@ -362,6 +414,9 @@ function init()
                 } 
                 else
                 {
+                    // Play the right sfx.
+                    goodSFX_01.play();
+                    
                     // If NOT a mine.     
                     if(count <= 2){
                         // Get neighbors.
@@ -375,22 +430,22 @@ function init()
                         }
                     }
 
-                    // Add a base score of 10 for every revealed non-mine.
+                    // Add a base score of 1 for every revealed non-mine.
                     points = 10;             
                     
                     // Subtract 5 points from base value if it's been marked as unsure.
-                    if(isFlag(cell, "marker")){ points -= 5; }
-                    // Double value if it's been left unflagged.
-                    if(isUnflagged(cell)){ points *= 2; }       
-                    // Halve value if it's been marked as a guess.
-                    if(isFlag(cell, "guess")) { points *= 0.5; }
+                    if(isFlag(cell, "marker")){ points = Services.max(points - 5, 0); }
+                    // Add 2 points if it's been unflagged.
+                    if(isUnflagged(cell)){ points += 2; }       
+                    // Add only one point if it's been flagged as a guess.
+                    if(isFlag(cell, "guess")) { points += 1; }
                     
                     // Add points based on number of mines remaining.
                     points += Minesweeper.totalMineCount - Minesweeper.mineCount;
                     
                     // Add points based on time that has passed, if less than a minute.
                     seconds = Math.floor(Controller.SinceStart / 1000);
-                    if(seconds < 60) { points += (60 - seconds); }
+                    if(seconds < 60) { points += (60 - seconds) / 10; }
                     
                     // Add to score.
                     Minesweeper.score += Math.round(points);
@@ -418,18 +473,28 @@ function init()
                 // If the cell is unflagged, set flag to guess.
                 if(isUnflagged(cell))
                 {
-                    setFlag(cell, "guess");
-                    cell.querySelector(".text").innerHTML = "!";
+                    if(Minesweeper.flags < Minesweeper.maxFlags) {
+                        setFlag(cell, "guess");
+                        cell.querySelector(".text").innerHTML = "!";
+                        Minesweeper.flags++;
+                    } 
+                    else
+                    {
+                        loseSFX.play();
+                    }
                 } 
                 else if(isFlag(cell, "guess"))
                 {
+                    Minesweeper.flags--;
                     setFlag(cell, "marker");    
                     cell.querySelector(".text").innerHTML = "?";
+                    Minesweeper.flags++;
                 } 
                 else if(isFlag(cell, "marker"))
                 {
                     setFlag(cell, "unflagged");    
                     cell.querySelector(".text").innerHTML = "";
+                    Minesweeper.flags--;
                 }
             }            
         }
@@ -791,6 +856,9 @@ function init()
             armMine(mine);
         }
         
+        // Set max flag limit.
+        Minesweeper.maxFlags = Minesweeper.totalMineCount;
+        
         updateMinesRemaining(Minesweeper.mineCount);
     }
     
@@ -848,6 +916,10 @@ function init()
     {
         if(!Controller.IsStarted) 
         {
+            let message = document.querySelector(".result");
+            message.dataset.display = null;                            
+            message.innerHTML = "";
+            running = true;
             Controller.IsStarted = true;
             Controller.FrameID = requestAnimationFrame(
                 function(timestamp) {
@@ -929,8 +1001,10 @@ function init()
     // The update method will update what needs to be updated for this game loop.
     function update(delta) 
     {
-        updateTime(delta);
-        updateScore(delta);
+        if(!Controller.IsComplete){
+            updateTime(delta);
+            updateScore(delta);
+        }
     }
     
     // Update the time since start.
@@ -1021,11 +1095,15 @@ function init()
         }
         
         Controller.IsComplete = true;
+        
+        running = false;
+        getElement("#restart").innerHTML = "Start New Game";
     }
     
     // Stop calling function.
     function stop()
     {
+        running = false;
         Controller.IsComplete = false;
         Controller.IsRunning = false;
         Controller.IsStarted = false;
@@ -1043,7 +1121,12 @@ function init()
 window.onload = function() {
     print("Window loaded.");
     let startButton = document.querySelector("#restart").addEventListener("click", function(e){
-        init();
+        if(!running){
+            let welcome = document.querySelector(".welcome");
+            welcome.dataset.display = null;
+            e.target.innerHTML = "FIND THE MINES!";
+            init();            
+        }
     });
 };
 

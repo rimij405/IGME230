@@ -38,13 +38,15 @@
                 <main>
                     <!-- PROJECT GOES HERE -->
                     <section id="project">
-                        <div id="container">
+                        <div id="container"> 
+                            <span class="result">Message</span>
+                            <span class="welcome" data-display="show">Click the button below to start.</span>
                         </div>
                     </section>
-                    <div class="buttons">
-                        <div id="restart">Start Game</div>
-                    </div>
                     <div class="console">
+                        <div class="buttons">
+                            <div id="restart">Start Game</div>
+                        </div>
                         <p>FIND ALL THE MINES.</p>
                         <p>SAVE YOURSELF.</p>
                         <p>Mines LEFT: <span id="minesLeft">0</span></p>
@@ -52,8 +54,15 @@
                         <p>SCORE: <span id="score">0</span></p>
                     </div>
                     <div class="instructions">
-                        <p>Instructions.</p>
-                        <p>You're tasked with finding the mines in the minefield!</p>
+                        <h1>Instructions.</h1>
+                        <p>Flag down all the mines! You have the same amount of flags as there are mines!</p>
+                        <p>Right-click squares to place "!" flags to diffuse mines on reveal.</p>
+                        <p>Right-click, again, to place "?" flags to keep track of spaces you're unsure of - be warned, this won't diffuse the mine if you reveal one!</p>
+                        <p>Right-click, a third time to remove any existing flags.</p>
+                        <p>Revealing a mine that isn't being diffused will blow up the game!</p>
+                        <p>When clicking on a space, you'll unlock some neighboring cells, as long as they aren't mines!</p>
+                        <p>You'll receive points for every square that you reveal and every mine you successfully diffuse!</p>
+                        <p>Diffused mines are marked by a "&copy;" symbol.</p>
                     </div>
                     <!-- /PROJECT GOES HERE -->              
                 </main>
