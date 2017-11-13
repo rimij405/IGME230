@@ -6,5 +6,19 @@
  * Made By MaterializeCSS.com
 */
 
+.image-padding {
+    padding-top: 15px;    
+}
 
+nav ul a {
+    font-size: 1.2rem;
+}
 
+a .fa {
+    color: white;
+    padding-right: 15px;
+}
+
+a:hover .fa {
+    color: #ccc;
+}
