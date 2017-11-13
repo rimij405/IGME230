@@ -852,5 +852,96 @@ var ship = {
 
 *The x, y, and speed values should have a 'this' reference in order to be modified.*
 
+***
+
+### Web Application 8 ###
+**JavaScript Arrays**
+
+#### Question 1 ####
+**True or False. JavaScript Arrays may hold only a single *type* of value.**
+
+*False. JavaScript Arrays are not strongly typed.*
+
+#### Question 2 ####
+**Which array operation adds an item to the end of an array?**
+
+*`Array.push()`.*
+
+#### Question 3 ####
+**Which array method can be used to *remove* items from an array?**
+
+*`Array.pop()` and `Array.shift()`*
+
+#### Question 4 ####
+**Which array method can be used to *copy* items to a new array?**
+
+*`Array.slice()`.*
+
+#### Question 5 ####
+**Describe 3 ways to loop through a JavaScript array.**
+
+*The classic `for` loop, the `for...of` loop (directly accessing values), and the `Array.forEach()` function, calling a function on each member of the array, although, this one can't be broken out of.*
+
+#### Question 6 ####
+**Does `Array.filter()` modify the old array (the one it is called on), or create a new array?**
+
+*Creates a new array of elements.*
+
+#### Question 7 ####
+**What is the type of the object that is returned by `document.querySelectorAll()`?**
+
+*A `NodeList`.*
+
+#### Question 8 ####
+**Using *method chaining* (at least 2 methods) and `Math` and `Number` methods, write code that produces a random number with only 2 digits past the decimal point.**
+
+*`Math.random().toFixed(2);`.*
+
+#### Question 9 ####
+**Define *Fluent interface*.**
+
+*JavaScript libraries that can be read like an ordinary written language.*
+
+***
+
+### Web Application 9 ###
+**Web Storage**
+
+#### Question 1 ####
+**What is a limitation of using localStorage on a shared domain like people.rit.edu? What is a workaround that will mitigate this issue?**
+
+*When sharing group space (rit.edu), each localStorage key can be overwritten if multiple students use the same one. Using a unique prefix will ensure the keys never conflict.*
+
+#### Question 2 ####
+**What is the difference between local and session storage?**
+
+*Local storage persists, even when the browser is closed and reopened.*
+
+#### Question 3 ####
+**If the user opens up the demo page in a different web browswer on the same machine, will their chosen preferences still be visible? Why or why not?**
+
+*No. Local storage is assigned on a per-browser basis. Firefox will not access the same storage as Chrome.*
+
+#### Question 4 ####
+**Define *serialization*.**
+
+*Serialization is the act of formating data in some way, for transport, to be translated back into the original data structure, at some point, later on in the process.*
+
+#### Question 5 ####
+**What does `JSON.stringify()` do?**
+
+*`JSON.stringify()` serializes a data object in JavaScript Object Notation, into a string, for storage.*
+
+#### Question 6 ####
+**What does `JSON.parse()` do?**
+
+*`JSON.parse()` takes a serialized string, and deserializes it, returning an array in JavaScript Object Notation.*
+
+#### Question 7 ####
+**One big issue with the applications we have written this semester is that reloading the page will wipe out all of the user's work (for example the poem they created in *Magnetic Poetry*, or, their pixel art creation in *Pixel Artist*). Think about the various HW assignments that we have worked on for this Web Apps unit - pick two of them - and describe how they could be improved by utilizing web storage.**
+
+*Save favorites from the random phrases generator, or, keep a highscore for the chibi matching game.*
+
 *****
+
 *[Back to Top](#review-questions)*

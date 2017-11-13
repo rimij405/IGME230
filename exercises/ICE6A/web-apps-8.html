@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Web Application 8</title>
+        <link type="text/css" rel="stylesheet" href="css/main.css" />
+        <script>
+            // Provided array.
+            let cars = [
+                {make:"Toyota",	year:2015},
+                {make:"Jeep",	year:1946},
+                {make:"Ford",	year:2017},
+                {make:"Tesla",	year:2018},
+                {make:"Fiat",	year:1982},
+                {make:"Dodge",	year:1970},
+                {make:"Chevy",	year:1957},
+            ];
+            
+            // Filter by classic cars.
+            function filter1 (value) {
+                return (value.year <= 1970);
+            }            
+            
+            // Sort by year.
+            function sort1 (a, b) 
+            {
+                if(a.year > b.year)
+                {
+                    return 1;
+                }
+                
+                if (a.year < b.year) {
+                    return -1;
+                }
+                
+                // if a.year === b.year.
+                return 0;
+            }
+            
+            // Map function.
+            function map1(value) {
+                if(value.year >= 2010) {
+                    return value.year;
+                }                
+            }
+            
+            // 1. Classic cars.
+            let classicCars = [];
+            classicCars = cars.filter(filter1);
+            
+            // 2. Sort by year.
+            let sortedByYear = [];
+            sortedByYear = cars.sort(sort1);
+            
+            // 3. Newer years only.
+            let newerYearsOnly = [];
+            newerYearsOnly = cars.map(map1).filter(function(value){
+                return (value !== undefined);
+            });                 
+            
+            debugger;
+        </script>
+    </head>
+    <body>            
+
+        <div id="id_wrapper">
+            <div id="id_message">
+                <h1>Web Application Exercise 8</h1>
+                <p>Please take a look at the developer's console for this page.</p>
+            </div>
+
+            <div id="id_tasks">
+                <h2>Tasks</h2>
+                <p><em>This page accomplishes the following:</em></p>
+                <ol id="id_tasklist">
+                    <li class="cl_listelement">Creates a new array, containing cars with a year of 1970 or earlier.</li>                
+                    <li class="cl_listelement">Creates a new array, sorting the car array contents by year, ascending.</li>                
+                    <li class="cl_listelement">Creates a new array that contains cars created in or after the year 2010.</li>        
+                </ol>            
+            </div>
+
+        </div>
+                
+        <footer>
+            <p>&copy; Copyright 2017 - Ian Effendi</p>
+            <p class="caption"><a href="index.html">Return to Exercises</a>.</p>
+        </footer>     
+        
+    </body>
+</html>
