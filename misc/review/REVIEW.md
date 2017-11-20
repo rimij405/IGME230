@@ -556,6 +556,11 @@ Review Questions:
 - [Introduction to Web Browser DOM](#web-application-3)
 - [More Web Browswer DOM Methods](#web-application-4)
 - [JavaScript Functions](#web-application-5)
+- [JavaScript Events](#web-application-6)
+- [JavaScript Object Literals](#web-application-7)
+- [JavaScript Arrays](#web-application-8)
+- [Web Storage](#web-application-9)
+- [Intro to PIXI.JS](#pixi-js-1)
 
 ### Web Application 1 ###
 **Introduction to Web Applications**
@@ -941,6 +946,31 @@ var ship = {
 **One big issue with the applications we have written this semester is that reloading the page will wipe out all of the user's work (for example the poem they created in *Magnetic Poetry*, or, their pixel art creation in *Pixel Artist*). Think about the various HW assignments that we have worked on for this Web Apps unit - pick two of them - and describe how they could be improved by utilizing web storage.**
 
 *Save favorites from the random phrases generator, or, keep a highscore for the chibi matching game.*
+
+***
+
+### PIXI JS 1 ###
+**Introduction to PIXI.JS**
+
+#### Question 1 ####
+**What does *CDN* stand for? What are the advantages of using a CDN?**
+
+*CDN stands for, "Content Distribution Network." It enables webpages the chance to point to a resource (be it script or CSS) stored offsite at runtime.*
+
+#### Question 2 ####
+**What does *CORS* stand for? How do you get around it?**
+
+*CORS stands for Cross-Origin Resource Sharing, and, it can be circumvented by using a server to host the webpage (and even check functionality).*
+
+#### Question 3 ####
+**Give 2 ways to set up a local web server for your personal computer.**
+
+*First option: use the `Brackets` IDE. Second option: use `Node.JS`.*
+
+#### Question 4 ####
+**What are the hexadecimal values for white, black, and green?**
+
+*The hexadecimal values are `0xFFFFFF`, `0x000000`, and `0x00FF00`, respectively.*
 
 *****
 
