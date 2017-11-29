@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        
+        <!-- Title of the page goes here. -->
+        <title>Index</title>
+        
+        <link href="css/main.css" type="text/css" rel="stylesheet" />        
+        <!-- Responsive polyfill that enables media query functionality in unsupportive browsers. -->
+        <script type='text/javascript' src='scripts/respond.min.js'></script>
+        <!-- Font Awesome CDN -->
+        <script src="https://use.fontawesome.com/cffe900f91.js"></script>
+    </head>
+    <body>
+        <div id="website-wrapper">
+            
+            <!-- Header -->
+            <header>
+                
+                <!-- Navigation Bar -->
+                <nav>
+                    
+                    <!-- Hamburgers -->
+                    <a href="#" class="hamburger" title="Open Navigation" onclick="openSideNav()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <!-- /Hamburgers -->
+                    
+                    <!-- Side Navbar -->
+                    <div id="sidenav" class="sidenav">  
+                                                                        
+                        <!-- Close button -->
+                        <div class="btn_close">
+                            <a href="javascript:void(0)" title="Close Navigation" onclick="closeNav()">
+                                &times;
+                            </a>
+                        </div>
+                        
+                        <!-- Logo -->
+                        <div class="brand">
+                            <a class="brand-img" title="Home Page" href="index.html">
+                                <img src="media/logo_color_transparent.png" alt="Home Page" />
+                            </a>
+                        </div>
+                        <!-- /Logo -->
+
+                        <!-- Navigation Links -->
+                        <ul class="navigation">
+                            <li class="navigation-link">
+                                <a href="index.html" title="Home Page">
+                                    <img class="current-link-img" src="media/laurel_left.png" alt="Current Link" />
+                                    Home
+                                    <img class="current-link-img" src="media/laurel_right.png" alt="Current Link" />
+                                </a>
+                            </li>
+                            <li class="navigation-link"><a href="proposal.html" title="Proposal Page">Proposal</a></li>
+                            <li class="navigation-link"><a href="documentation.html" title="Documentation Page">Documentation</a></li>
+                            <li class="navigation-link"><a href="project.html" title="Project Page">Project</a></li>
+                        </ul>   
+                        <!-- /Navigation Links -->
+                        
+                    </div>
+                    <!-- /Side Navbar -->
+                    
+                    
+                    <!-- Navbar -->
+                    <div class="fullnav">                    
+                        <!-- Logo -->
+                        <div class="brand">
+                            <a class="brand-img" title="Home Page" href="index.html">
+                                <img src="media/logo_color_transparent.png" alt="Home Page" />
+                            </a>
+                        </div>
+                        <!-- /Logo -->
+
+                        <!-- Navigation Links -->
+                        <ul class="navigation">                            
+                            <li class="navigation-link">
+                                <a href="index.html" title="Home Page">
+                                    <img class="current-link-img" src="media/laurel_left.png" alt="Current Link" />
+                                    Home
+                                    <img class="current-link-img" src="media/laurel_right.png" alt="Current Link" />
+                                </a>
+                            </li>
+                            <li class="navigation-link"><a href="proposal.html" title="Proposal Page">Proposal</a></li>
+                            <li class="navigation-link"><a href="documentation.html" title="Documentation Page">Documentation</a></li>
+                            <li class="navigation-link"><a href="project.html" title="Project Page">Project</a></li>
+                        </ul>   
+                        <!-- /Navigation Links -->
+                        
+                    </div>
+                    <!-- /Navbar -->
+                    
+                </nav>
+                <!-- /Navigation Bar -->
+                
+            </header>
+            <!-- /Header -->
+            
+            
+            
+            <main>
+                <section id="hero">
+                    <img src="media/logo_color_transparent.png" alt="Placeholder image." />
+                    <h2>Olympic Typewriters!</h2>
+                    <p>A 2D, typing game, in which you type to compete! At the olympic games, players toss weights by typing complex word combinations; the faster you type, the further you throw!</p>
+                </section>
+                
+                <section id="hero_buttons">
+                    <a href="project.html" title="See the project.">See Project</a>
+                    <a href="proposal.html" title="See proposal.">See Proposal</a>
+                </section>
+            </main>
+            
+            <footer>
+                <div class="footer-wrap">
+                    <div class="copyright">
+                        <p>&copy; Ian Effendi - 2017</p>
+                    </div>
+                    <section class="contacts">
+                        <h4>Contacts</h4>
+                        <ul>
+                            <li><a href="#">Github: @rimij405</a></li>
+                            <li>Email: <a href="mailto:iae2784@g.rit.edu">iae2784@g.rit.edu</a></li>
+                            <li>Phone: <a href="tel:347.821.6407">1(347) 821 - 6407</a></li>
+                            
+                        </ul>
+                    </section>
+                    <section class="sitemap">
+                        <h4>Sitemap</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="proposal.html">Proposal</a></li>
+                            <li><a href="documentation.html">Documentation</a></li>
+                            <li><a href="project.html">Project</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </footer>
+        </div> 
+        
+        <!-- JavaScript -->
+        <script type="text/javascript">
+            function openSideNav() {
+                document.getElementById("sidenav").style.width = "100%";
+            }
+            
+            function closeNav() {
+                document.getElementById("sidenav").style.width = "0";
+            }
+        </script>        
+        <!-- /JavaScript -->
+    </body>
+</html>
