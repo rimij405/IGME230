@@ -2,6 +2,7 @@
 "use strict";
 
 const Prefs = {
+    SVGElement: undefined,
     framesSinceStart: 0,
     debugElement: {
         id: "#debug",
@@ -26,6 +27,8 @@ window.addEventListener('load', function(){
 // Initialize the page.
 function init() {
     Prefs.framesSinceStart = 0;
+    Prefs.SVGElement = new SVGElement('http://www.w3.org/2000/svg', '100%', '800px');
+    document.appendChild(Prefs.SVGElement.getInstance());
 }
 
 // The main loop.
