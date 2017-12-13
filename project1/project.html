@@ -8,10 +8,23 @@
         <title>Project</title>
         
         <link href="css/main.css" type="text/css" rel="stylesheet" />        
-        <!-- Responsive polyfill that enables media query functionality in unsupportive browsers. -->
-        <script type='text/javascript' src='scripts/respond.min.js'></script>
         <!-- Font Awesome CDN -->
-        <script src="https://use.fontawesome.com/cffe900f91.js"></script>
+        <script src="https://use.fontawesome.com/cffe900f91.js"></script> <!-- Font Awesome CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script> <!-- PIXI.js CDN -->
+        
+        <!-- Scripts (JavaScript) -->       
+        <script src="js/button.js"></script>   
+        <script src="js/label.js"></script>      
+        <script src="js/state.js"></script>   
+        <script src="js/scores.js"></script>
+        <script src="js/scoreManager.js"></script>
+        <script src="js/competitor.js"></script>
+        <script src="js/round.js"></script>
+        <script src="js/gameOver.js"></script>
+        <script src="js/mainMenu.js"></script>
+        <script src="js/game.js"></script>   
+        <script src="js/main.js"></script>
+        
     </head>
     <body>
         <div id="website-wrapper">
@@ -102,7 +115,10 @@
             
             <main>
                 <h1>Olypmic Typerwriters!</h1>
-                <img id="project" src="http://via.placeholder.com/1920x1080" alt="Placeholder image." />
+                <div id="project">
+                    <div class="content">
+                    </div>
+                </div>
                 <em>This is a placeholder for the actual project.</em>
             </main>
             <footer>
