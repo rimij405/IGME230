@@ -1,7 +1,6 @@
 "use strict;"
 
-// https://opengameart.org/content/spaceship-13
-
+// Tutorials used.
 // http://proclive.io/tag/pixi/
 // http://proclive.io/pixi-js-drag-drop/
 // http://proclive.io/shooting-tutorial/
