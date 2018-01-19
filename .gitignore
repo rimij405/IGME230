@@ -22,6 +22,7 @@ node_modules/
 /_site
 
 # ignore OS generated files
+desktop.ini
 ehthumbs.db
 Thumbs.db
 
